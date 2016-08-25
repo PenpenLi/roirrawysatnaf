@@ -1,6 +1,6 @@
 dependencies: \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/platform/mac/DeviceEx-mac.mm \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/proj.ios_mac/../lib/DeviceEx.h \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerMacros.h \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/proj.ios_mac/../lib/SimulatorExport.h \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/platform/mac/openudid/OpenUDIDMac.h
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/platform/mac/DeviceEx-mac.mm \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/../lib/DeviceEx.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerMacros.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/../lib/SimulatorExport.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/platform/mac/openudid/OpenUDIDMac.h

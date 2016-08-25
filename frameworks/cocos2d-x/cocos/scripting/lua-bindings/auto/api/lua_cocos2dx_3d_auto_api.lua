@@ -57,6 +57,26 @@
 
 
 --------------------------------------------------------
+-- the cc JumpBy3D
+-- @field [parent=#cc] JumpBy3D#JumpBy3D JumpBy3D preloaded module
+
+
+--------------------------------------------------------
+-- the cc Effect
+-- @field [parent=#cc] Effect#Effect Effect preloaded module
+
+
+--------------------------------------------------------
+-- the cc EffectNormalMapped
+-- @field [parent=#cc] EffectNormalMapped#EffectNormalMapped EffectNormalMapped preloaded module
+
+
+--------------------------------------------------------
+-- the cc EffectSprite
+-- @field [parent=#cc] EffectSprite#EffectSprite EffectSprite preloaded module
+
+
+--------------------------------------------------------
 -- the cc Bundle3D
 -- @field [parent=#cc] Bundle3D#Bundle3D Bundle3D preloaded module
 

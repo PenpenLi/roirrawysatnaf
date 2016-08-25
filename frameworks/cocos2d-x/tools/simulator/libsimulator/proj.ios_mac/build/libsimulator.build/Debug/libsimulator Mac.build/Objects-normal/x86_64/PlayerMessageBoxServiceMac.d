@@ -1,6 +1,6 @@
 dependencies: \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/platform/mac/PlayerMessageBoxServiceMac.mm \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/platform/mac/PlayerMessageBoxServiceMac.h \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerMacros.h \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerMessageBoxServiceProtocol.h \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerServiceProtocol.h
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/platform/mac/PlayerMessageBoxServiceMac.mm \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/platform/mac/PlayerMessageBoxServiceMac.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerMacros.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerMessageBoxServiceProtocol.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/../lib/PlayerServiceProtocol.h

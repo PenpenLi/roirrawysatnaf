@@ -1,3 +1,6 @@
+--[[
+	loading界面
+]]
 
 local ParticleManager = require("app.controllers.ParticleManager")
 local Slime = require("app.actors.Slime")
@@ -20,19 +23,24 @@ local spriteFrameRes = {
 	{"mainmenuscene/mainmenuscene.plist", "mainmenuscene/mainmenuscene.png"}
 }
 
+local res_bg = "loadingscene/bg.jpg"
+local res_slider = "loadingscene/sliderProgress.png"
+
+local font_loading = "chooseRole/actor_param.ttf"
+
 function MainScene:onCreate()
 	self.num = table.nums(particleRes) + table.nums(spriteFrameRes)
 	self.totalResource = self.num
 	self.size = cc.Director:getInstance():getWinSize()
 	self.pm = ParticleManager:getInstance()
 
-	local background = display.newSprite("loadingscene/bg.jpg", self.size.width/2, self.size.height/2)
+	local background = display.newSprite(res_bg, self.size.width/2, self.size.height/2)
 	background:setScale(1.5)
 	self:addChild(background)
     background:setGlobalZOrder(-1)
     -- background:setPositionZ(-250)
 
-	local loadingbar = ccui.LoadingBar:create("loadingscene/sliderProgress.png")
+	local loadingbar = ccui.LoadingBar:create(res_slider)
 	self:addChild(loadingbar)
 	loadingbar:setPosition(self.size.width * 0.5, self.size.height * 0.2)
 	loadingbar:setScale(3, 2)
@@ -67,7 +75,7 @@ function MainScene:onCreate()
 
 		if self.num == -1 then
 			cc.Director:getInstance():getScheduler():unscheduleScriptEntry(self.scheduleID)
-			-- self.getApp():run()
+			self:getApp():run("MainMenuScene")
 		end
 	end
 	self.scheduleID = cc.Director:getInstance():getScheduler():scheduleScriptFunc(update, 0.1, false)
@@ -94,7 +102,7 @@ function MainScene:slimeAction()
 		cc.Spawn:create(
 				cc.Sequence:create(
 					cc.DelayTime:create(dur/8),
-					cc.JumpBy:create(dur*7/8, cc.p(0, 0), 30, 1)
+					cc.JumpBy3D:create(dur*7/8, cc.p(0, 0), 30, 1)
 					),
 				cc.Sequence:create(
 	                cc.EaseSineOut:create(cc.ScaleTo:create(dur/8, bsc*1.4, bsc*1.4, bsc*0.75)),
@@ -111,7 +119,7 @@ function MainScene:addLoadingText()
 	local ttfconfig = {
 		outlineSize = 5,
 		fontSize = 55,
-		fontFilePath = "chooseRole/actor_param.ttf"
+		fontFilePath = font_loading
 	}
 	local loading = {}
 	local textArr = {"l", "o", "a", "d", "i", "n", "g"}

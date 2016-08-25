@@ -1,3 +1,3 @@
 dependencies: \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/runtime/Landscape_png.cpp \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/runtime/ResData.h
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/runtime/Landscape_png.cpp \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/runtime/ResData.h

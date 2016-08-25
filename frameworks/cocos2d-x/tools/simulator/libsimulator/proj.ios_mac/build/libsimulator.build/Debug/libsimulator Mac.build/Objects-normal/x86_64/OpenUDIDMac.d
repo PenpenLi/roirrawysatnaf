@@ -1,3 +1,3 @@
 dependencies: \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/platform/mac/openudid/OpenUDIDMac.m \
-  /Applications/Cocos/Cocos2d-x/cocos2d-x-3.12/tools/simulator/libsimulator/lib/platform/mac/openudid/OpenUDIDMac.h
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/platform/mac/openudid/OpenUDIDMac.m \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/tools/simulator/libsimulator/lib/platform/mac/openudid/OpenUDIDMac.h

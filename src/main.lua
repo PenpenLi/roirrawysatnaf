@@ -14,7 +14,7 @@ local function main()
 	local director = cc.Director:getInstance()
 	director:setClearColor({r = 1, g = 1, b = 1, a = 1})
 
-    require("app.MyApp"):create():run()
+    require("app.MyApp"):create():run("MainScene")
 end
 
 local status, msg = xpcall(main, __G__TRACKBACK__)
