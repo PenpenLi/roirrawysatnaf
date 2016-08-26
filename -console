@@ -28,7 +28,7 @@ Project Config:
     project dir: /Volumes/D/GitHub/FantasyWarrior/
     writable path: $(PROJDIR)/
     script file: $(PROJDIR)/src/main.lua
-    frame size: 960 x 640
+    frame size: 1136 x 640
     frame scale: 1.00
     show console: YES
     write debug log: /Volumes/D/GitHub/FantasyWarrior/-console (/Volumes/D/GitHub/FantasyWarrior/-console)
@@ -910,7 +910,7 @@ cc.EGLView was deprecated please use cc.GLView instead.
 ********** 
 cc.EGLView was deprecated please use cc.GLView instead.
 **********
-[LUA-print] table: 0x12833738
+[LUA-print] table: 0x14f6d748
 [LUA-print] 
 ********** 
 cc.ShaderCache was deprecated please use cc.GLProgramCache instead.
@@ -1159,30 +1159,30 @@ WebSocket was deprecated please use cc.WebSocket instead.
 [LUA-print] [INFO] #
 [LUA-print] [INFO] # design resolution size       = {width = 1136.00, height = 640.00}
 [LUA-print] [INFO] # design resolution autoscale  = FIXED_HEIGHT
-[LUA-print] [INFO] # display.sizeInPixels         = {width = 960.00, height = 640.00}
-[LUA-print] [INFO] # display.size                 = {width = 960.00, height = 640.00}
+[LUA-print] [INFO] # display.sizeInPixels         = {width = 1136.00, height = 640.00}
+[LUA-print] [INFO] # display.size                 = {width = 1136.00, height = 640.00}
 [LUA-print] [INFO] # display.contentScaleFactor   = 1.00
-[LUA-print] [INFO] # display.width                = 960.00
+[LUA-print] [INFO] # display.width                = 1136.00
 [LUA-print] [INFO] # display.height               = 640.00
-[LUA-print] [INFO] # display.cx                   = 480.00
+[LUA-print] [INFO] # display.cx                   = 568.00
 [LUA-print] [INFO] # display.cy                   = 320.00
 [LUA-print] [INFO] # display.left                 = 0.00
-[LUA-print] [INFO] # display.right                = 960.00
+[LUA-print] [INFO] # display.right                = 1136.00
 [LUA-print] [INFO] # display.top                  = 640.00
 [LUA-print] [INFO] # display.bottom               = 0.00
-[LUA-print] [INFO] # display.c_left               = -480.00
-[LUA-print] [INFO] # display.c_right              = 480.00
+[LUA-print] [INFO] # display.c_left               = -568.00
+[LUA-print] [INFO] # display.c_right              = 568.00
 [LUA-print] [INFO] # display.c_top                = 320.00
 [LUA-print] [INFO] # display.c_bottom             = -320.00
-[LUA-print] [INFO] # display.center               = {x = 480.00, y = 320.00}
+[LUA-print] [INFO] # display.center               = {x = 568.00, y = 320.00}
 [LUA-print] [INFO] # display.left_top             = {x = 0.00, y = 640.00}
 [LUA-print] [INFO] # display.left_bottom          = {x = 0.00, y = 0.00}
 [LUA-print] [INFO] # display.left_center          = {x = 0.00, y = 320.00}
-[LUA-print] [INFO] # display.right_top            = {x = 960.00, y = 640.00}
-[LUA-print] [INFO] # display.right_bottom         = {x = 960.00, y = 0.00}
-[LUA-print] [INFO] # display.right_center         = {x = 960.00, y = 320.00}
-[LUA-print] [INFO] # display.top_center           = {x = 480.00, y = 640.00}
-[LUA-print] [INFO] # display.top_bottom           = {x = 480.00, y = 0.00}
+[LUA-print] [INFO] # display.right_top            = {x = 1136.00, y = 640.00}
+[LUA-print] [INFO] # display.right_bottom         = {x = 1136.00, y = 0.00}
+[LUA-print] [INFO] # display.right_center         = {x = 1136.00, y = 320.00}
+[LUA-print] [INFO] # display.top_center           = {x = 568.00, y = 640.00}
+[LUA-print] [INFO] # display.top_bottom           = {x = 568.00, y = 0.00}
 [LUA-print] [INFO] #
 [LUA-print] [INFO] cc.load() - load module "packages.mvc.init"
 [LUA-print] dump from: [string "packages/mvc/AppBase.lua"]:23: in function 'ctor'
@@ -1197,6 +1197,56 @@ WebSocket was deprecated please use cc.WebSocket instead.
 [LUA-print] - }
 cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord1
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord1
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord1
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord1
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord1
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord1
 iShow!
 cocos2d: QuadCommand: resizing index size from [-1] to [2560]
-libpng warning: iCCP: known incorrect sRGB profile
+error:
+     cc.RotateTo:create argument #3 is 'table'; 'number' expected.
+

@@ -233,6 +233,7 @@ dependencies: \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/../../../3d/CCTerrain.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/../../../3d/JumpBy3D.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/../../../3d/EffectSprite.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/../../../3d/EffectSprite3D.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/../../../vr/CCVRGenericRenderer.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/../../../vr/CCVRProtocol.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/../../../deprecated/CCDeprecated.h \

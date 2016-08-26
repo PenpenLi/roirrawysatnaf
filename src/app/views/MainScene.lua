@@ -26,15 +26,12 @@ local spriteFrameRes = {
 local res_bg = "loadingscene/bg.jpg"
 local res_slider = "loadingscene/sliderProgress.png"
 
-local font_loading = "chooseRole/actor_param.ttf"
-
 function MainScene:onCreate()
 	self.num = table.nums(particleRes) + table.nums(spriteFrameRes)
 	self.totalResource = self.num
-	self.size = cc.Director:getInstance():getWinSize()
 	self.pm = ParticleManager:getInstance()
 
-	local background = display.newSprite(res_bg, self.size.width/2, self.size.height/2)
+	local background = display.newSprite(res_bg, display.cx, display.cy)
 	background:setScale(1.5)
 	self:addChild(background)
     background:setGlobalZOrder(-1)
@@ -42,7 +39,7 @@ function MainScene:onCreate()
 
 	local loadingbar = ccui.LoadingBar:create(res_slider)
 	self:addChild(loadingbar)
-	loadingbar:setPosition(self.size.width * 0.5, self.size.height * 0.2)
+	loadingbar:setPosition(display.cx, display.height * 0.2)
 	loadingbar:setScale(3, 2)
 	loadingbar:setColor(cc.c3b(0, 0, 0))
 	loadingbar:setOpacity(70)
@@ -88,8 +85,8 @@ function MainScene:slimeAction()
 	display.loadSpriteFrames("FX/FX.plist", "FX/FX.png")
 
 	local slime = Slime.new()
-	self.slimeOriginX = self.size.width * 0.2
-	self.slimeOriginY = self.size.height * 0.3
+	self.slimeOriginX = display.width * 0.2
+	self.slimeOriginY = display.height * 0.3
 	slime:setPosition(self.slimeOriginX, self.slimeOriginY)
 	self.slime = slime
 	self:addChild(slime)
@@ -119,7 +116,7 @@ function MainScene:addLoadingText()
 	local ttfconfig = {
 		outlineSize = 5,
 		fontSize = 55,
-		fontFilePath = font_loading
+		fontFilePath = font_actor
 	}
 	local loading = {}
 	local textArr = {"l", "o", "a", "d", "i", "n", "g"}
@@ -127,8 +124,8 @@ function MainScene:addLoadingText()
 	for i = 1, textCount do
 		loading[i] = cc.Label:createWithTTF(ttfconfig, textArr[i])
 		loading[i]:enableOutline(cc.c4b(104, 151, 161, 255))
-        loading[i]:setPosition(self.size.width*0.1+self.size.width*0.1*i,
-        	self.size.height*0.6)
+        loading[i]:setPosition(display.width*0.1+display.width*0.1*i,
+        	display.height*0.6)
         self:addChild(loading[i])
 	end
 	self.loading = loading

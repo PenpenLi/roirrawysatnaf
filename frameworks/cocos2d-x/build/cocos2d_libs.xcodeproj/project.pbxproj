@@ -3854,6 +3854,12 @@
 		826294331AAF001C00CB7CF7 /* HttpAsynConnection-apple.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2A1A5349A3004E4C60 /* HttpAsynConnection-apple.m */; };
 		826294341AAF003E00CB7CF7 /* HttpClient-apple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2B1A5349A3004E4C60 /* HttpClient-apple.mm */; };
 		826294351AAF004C00CB7CF7 /* HttpCookie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2C1A5349A3004E4C60 /* HttpCookie.cpp */; };
+		842B91541D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */; };
+		842B91551D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */; };
+		842B91561D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */; };
+		842B91571D6FE57A007A5781 /* EffectSprite3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 842B91531D6FE57A007A5781 /* EffectSprite3D.h */; };
+		842B91581D6FE57A007A5781 /* EffectSprite3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 842B91531D6FE57A007A5781 /* EffectSprite3D.h */; };
+		842B91591D6FE57A007A5781 /* EffectSprite3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 842B91531D6FE57A007A5781 /* EffectSprite3D.h */; };
 		844FA14F1D6C2E0D00430C0D /* JumpBy3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 844FA14D1D6C2E0D00430C0D /* JumpBy3D.cpp */; };
 		844FA1501D6C2E0D00430C0D /* JumpBy3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 844FA14E1D6C2E0D00430C0D /* JumpBy3D.h */; };
 		845911321D6D3AC3009AC85E /* JumpBy3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 844FA14D1D6C2E0D00430C0D /* JumpBy3D.cpp */; };
@@ -6776,6 +6782,8 @@
 		5E9F61231A3FFE3D0038DE01 /* CCFrustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFrustum.h; sourceTree = "<group>"; };
 		5E9F61241A3FFE3D0038DE01 /* CCPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPlane.cpp; sourceTree = "<group>"; };
 		5E9F61251A3FFE3D0038DE01 /* CCPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPlane.h; sourceTree = "<group>"; };
+		842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EffectSprite3D.cpp; sourceTree = "<group>"; };
+		842B91531D6FE57A007A5781 /* EffectSprite3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectSprite3D.h; sourceTree = "<group>"; };
 		844FA14D1D6C2E0D00430C0D /* JumpBy3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpBy3D.cpp; sourceTree = "<group>"; };
 		844FA14E1D6C2E0D00430C0D /* JumpBy3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpBy3D.h; sourceTree = "<group>"; };
 		845911781D6DB88B009AC85E /* EffectSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EffectSprite.cpp; sourceTree = "<group>"; };
@@ -10152,6 +10160,8 @@
 		B29594B81926D61F003EEF37 /* 3d */ = {
 			isa = PBXGroup;
 			children = (
+				842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */,
+				842B91531D6FE57A007A5781 /* EffectSprite3D.h */,
 				845911781D6DB88B009AC85E /* EffectSprite.cpp */,
 				845911791D6DB88B009AC85E /* EffectSprite.h */,
 				844FA14D1D6C2E0D00430C0D /* JumpBy3D.cpp */,
@@ -11939,6 +11949,7 @@
 				B665E2B01AA80A6500DDB1C5 /* CCPUFlockCenteringAffectorTranslator.h in Headers */,
 				B6CAB2EF1AF9AA1A00B9B856 /* btStridingMeshInterface.h in Headers */,
 				B6CAB23F1AF9AA1A00B9B856 /* btConvex2dConvex2dAlgorithm.h in Headers */,
+				842B91571D6FE57A007A5781 /* EffectSprite3D.h in Headers */,
 				382384381A259126002C4610 /* ProjectNodeReader.h in Headers */,
 				15FB20991AE7C57D00C31518 /* sweep.h in Headers */,
 				A045F6F11BA81821005076C7 /* GameNode3DReader.h in Headers */,
@@ -12774,6 +12785,7 @@
 				507B3EBB1C31BDD30067B53E /* CCMeshVertexIndexData.h in Headers */,
 				507B3EBC1C31BDD30067B53E /* UIVBox.h in Headers */,
 				507B3EBD1C31BDD30067B53E /* CCLight.h in Headers */,
+				842B91591D6FE57A007A5781 /* EffectSprite3D.h in Headers */,
 				507B3EBE1C31BDD30067B53E /* CCFrustum.h in Headers */,
 				507B3EBF1C31BDD30067B53E /* CCPUPositionEmitter.h in Headers */,
 				507B3EC01C31BDD30067B53E /* CCDataReaderHelper.h in Headers */,
@@ -14207,6 +14219,7 @@
 				503DD8E01926736A00CD74DD /* CCApplication-ios.h in Headers */,
 				B6CAB4021AF9AA1A00B9B856 /* btMultiBodyConstraintSolver.h in Headers */,
 				B665E4111AA80A6600DDB1C5 /* CCPUTechniqueTranslator.h in Headers */,
+				842B91581D6FE57A007A5781 /* EffectSprite3D.h in Headers */,
 				15AE1B8319AADA9A00C27E9E /* UITextBMFont.h in Headers */,
 				B29A7E2A19EE1B7700872B35 /* SkeletonData.h in Headers */,
 				50ABBD8E1925AB4100A911A9 /* CCGLProgram.h in Headers */,
@@ -15055,6 +15068,7 @@
 				15AE1BC519AAE00000C27E9E /* AssetsManager.cpp in Sources */,
 				50ABBD5C1925AB0000A911A9 /* Vec3.cpp in Sources */,
 				1A570300180BCE890088DEC7 /* CCParallaxNode.cpp in Sources */,
+				842B91541D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */,
 				15AE191D19AAD35000C27E9E /* CCTween.cpp in Sources */,
 				B6CAB2311AF9AA1A00B9B856 /* btCollisionWorld.cpp in Sources */,
 				15AE1A6C19AAD40300C27E9E /* b2ChainAndPolygonContact.cpp in Sources */,
@@ -15924,6 +15938,7 @@
 				507B3BEE1C31BDD30067B53E /* CCPUJetAffectorTranslator.cpp in Sources */,
 				507B3BEF1C31BDD30067B53E /* btHashedSimplePairCache.cpp in Sources */,
 				507B3BF01C31BDD30067B53E /* btSphereShape.cpp in Sources */,
+				842B91561D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */,
 				507B3BF11C31BDD30067B53E /* btConvexTriangleMeshShape.cpp in Sources */,
 				507B3BF21C31BDD30067B53E /* SphereTriangleDetector.cpp in Sources */,
 				507B3BF31C31BDD30067B53E /* CCTMXTiledMap.cpp in Sources */,
@@ -16760,6 +16775,7 @@
 				B665E33B1AA80A6500DDB1C5 /* CCPUOnEventFlagObserver.cpp in Sources */,
 				3E2A09C31BAA91B70086B878 /* CCMotionStreak3D.cpp in Sources */,
 				1A5702F3180BCE750088DEC7 /* CCTMXObjectGroup.cpp in Sources */,
+				842B91551D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */,
 				382384221A2590DA002C4610 /* GameMapReader.cpp in Sources */,
 				15AE1BAF19AADFDF00C27E9E /* UILayoutManager.cpp in Sources */,
 				15AE182119AAD2F700C27E9E /* CCBundleReader.cpp in Sources */,

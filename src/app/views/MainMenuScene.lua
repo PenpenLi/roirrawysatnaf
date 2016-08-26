@@ -7,7 +7,7 @@
 	loading成功之后现实的主菜单界面
 ]]
 
-require("app.GlobalVariables")
+local MainMenuScene = class("MainMenuScene", cc.load("mvc").ViewBase)
 
 local res_bg = "mainmenuscene/bg.jpg"
 local res_cloud1 = "#cloud1.png"
@@ -23,10 +23,7 @@ local res_btn_start = "start.png"
 local res_effect_start_normal = "mainmenuscene/start_normal.png"
 local res_effect_start = "mainmenuscene/start.png"
 
-local MainMenuScene = class("MainMenuScene", cc.load("mvc").ViewBase)
-
 function MainMenuScene:onCreate()
-	self.size = cc.Director:getInstance():getVisibleSize()
 	ccexp.AudioEngine:stopAll()
 	AUDIO_ID.MAINMENUBGM = ccexp.AudioEngine:play2d(BGM_RES.MAINMENUBGM, true, 1)
 
@@ -59,12 +56,13 @@ function MainMenuScene:addButton()
             if eventType == ccui.TouchEventType.began then
                 ccexp.AudioEngine:play2d(BGM_RES.MAINMENUSTART, false, 1)
                 ccexp.AudioEngine:stop(AUDIO_ID.MAINMENUBGM)
+                self:getApp():run("ChooseRoleScene")
             end
         end
 	end
 
 	local button = ccui.Button:create(res_btn_start, "", "", ccui.TextureResType.plistType)
-	button:setPosition(self.size.width*0.5, self.size.height*0.15)
+	button:setPosition(display.cx, display.height*0.15)
 	button:addTouchEventListener(button_callback)
 	self:addChild(button,4)
 
@@ -73,7 +71,7 @@ function MainMenuScene:addButton()
 	effectNormalMapped:setKBump(100)
 	
 	local effectSprite = cc.EffectSprite:create(res_effect_start)
-	effectSprite:setPosition(self.size.width*0.5,self.size.height*0.15)
+	effectSprite:setPosition(display.cx,display.height*0.15)
 	self:addChild(effectSprite,5)
 	effectSprite:setEffect(effectNormalMapped)
 
@@ -83,7 +81,7 @@ function MainMenuScene:getLightSprite()
 	self.lightSprite = display.newSprite(res_light)
 	self.lightSprite:setBlendFunc({src = gl.ONE, dst = gl.ONE_MINUS_SRC_ALPHA})
 	self.lightSprite:setScale(1.2)
-	self.lightSprite:setPosition3D(cc.vec3(self.size.width * 0.5, self.size.height * 0.5, 0))
+	self.lightSprite:setPosition3D(cc.vec3(display.cx, display.cy, 0))
 
 	local light_size = self.lightSprite:getContentSize()
 	local rotate_top = cc.RotateBy:create(0.05, 50)
@@ -151,14 +149,14 @@ function MainMenuScene:addPointLight()
 
 	local function getBezierAction()
 	    local bezierConfig1 = {
-	        cc.p(self.size.width*0.9,self.size.height*0.4),
-	        cc.p(self.size.width*0.9,self.size.height*0.8),
-	        cc.p(self.size.width*0.5,self.size.height*0.8)
+	        cc.p(display.width*0.9,display.height*0.4),
+	        cc.p(display.width*0.9,display.height*0.8),
+	        cc.p(display.width*0.5,display.height*0.8)
 	    }
 	    local bezierConfig2 = {
-	        cc.p(self.size.width*0.1,self.size.height*0.8),
-	        cc.p(self.size.width*0.1,self.size.height*0.4),
-	        cc.p(self.size.width*0.5,self.size.height*0.4)
+	        cc.p(display.width*0.1,display.height*0.8),
+	        cc.p(display.width*0.1,display.height*0.4),
+	        cc.p(display.width*0.5,display.height*0.4)
 	    }
 	    local bezier1 = cc.BezierTo:create(5,bezierConfig1)
 	    local bezier2 = cc.BezierTo:create(5,bezierConfig2)
@@ -206,7 +204,7 @@ end
 
 function MainMenuScene:addLogo()
 	local logo = cc.EffectSprite:create(res_logo)
-	logo:setPosition(self.size.width * 0.53, self.size.height * 0.55)
+	logo:setPosition(display.width * 0.53, display.height * 0.55)
 	self:addChild(logo, 4)
 	logo:setScale(0.1)
 	self.logo = logo
@@ -231,15 +229,15 @@ end
 function MainMenuScene:addCloud()
 	local scale = 2
 
-	local cloud1 = display.newSprite(res_cloud1, self.size.width * 1.1, self.size.height * 0.9)
+	local cloud1 = display.newSprite(res_cloud1, display.width * 1.1, display.height * 0.9)
 	self:addChild(cloud1, 2)
 	cloud1:setScale(scale)
 
-	local cloud2 = display.newSprite(res_cloud1, self.size.width * 0.38, self.size.height * 0.6)
+	local cloud2 = display.newSprite(res_cloud1, display.width * 0.38, display.height * 0.6)
 	self:addChild(cloud2, 2)
 	cloud2:setScale(scale)
 
-	local cloud3 = display.newSprite(res_cloud2, self.size.width * 0.95, self.size.height * 0.5)
+	local cloud3 = display.newSprite(res_cloud2, display.width * 0.95, display.height * 0.5)
 	self:addChild(cloud3, 2)
 	cloud3:setScale(scale)
 
@@ -252,7 +250,7 @@ function MainMenuScene:addCloud()
 			local sp = clouds[i]
 			local point = sp:getPositionX() + offset[i]
 			if point < -sp:getContentSize().width*scale/2 then
-				point = self.size.width + sp:getContentSize().width * scale / 2
+				point = display.width + sp:getContentSize().width * scale / 2
 			end
 			sp:setPositionX(point)
 		end
@@ -261,7 +259,7 @@ function MainMenuScene:addCloud()
 end
 
 function MainMenuScene:addBg()
-	local bg_back = display.newSprite(res_bg, self.size.width/2, self.size.height/2)
+	local bg_back = display.newSprite(res_bg, display.cx, display.cy)
 	self:addChild(bg_back, 1)
 end
 

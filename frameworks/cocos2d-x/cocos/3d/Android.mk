@@ -26,6 +26,7 @@ CCSprite3D.cpp \
 CCTerrain.cpp \
 JumpBy3D.cpp \
 EffectSprite.cpp \
+EffectSprite3D.cpp \
 CCSkybox.cpp
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/..

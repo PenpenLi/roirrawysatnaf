@@ -2,7 +2,18 @@
 
 FantasyWarrior3D是cocos官网上面的一个3Ddemo，是基于cocos2d-x 3.4开发的。现在我打算基于cocos2d-x 3.12重新写这个demo，希望可以借此熟悉3.12的引擎以及3d的相关使用。  
 
-####2.0
+####1.2
+1. 完成`ChooseRoleScene.lua`，将自定义类`EffectSprite3D`绑定到lua中。
+2. 修改simulator的大小，在sublime的quick插件中。
+3. 涉及到model中的数据结构，效率、可读性、代码简略性的平衡，有些地方还是需要通过字符串来作为关键字，不能全部是使用Enum。
+
+		error:
+		cc.RotateTo:create argument #3 is 'table'; 'number' expected.
+		这个报错并不是代码有问题，而是luabingding代码中的逻辑判断产生的。
+
+
+
+####1.1
 1. 完成`MainMenuScene.lua`，将自定义类`EffectSprite`绑定到lua中。
 2. 通过`EffectSprite`和`cc.PointLight`实现点光源效果。
 3. 将simulator放到工程文件中，修改引擎的时候方便更新。

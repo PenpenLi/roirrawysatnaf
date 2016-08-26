@@ -6,6 +6,12 @@
 	人物基类
 ]]
 
+local Actor = class("Actor", function()
+	local node = cc.Sprite3D:create()
+	node:setCascadeColorEnabled(true)
+	return node
+	end)
+
 -- common value is used to reset an actor
 local ActorCommonValues = {
 	aliveTime		= 0, -- time the actor is alive in seconds
@@ -39,14 +45,9 @@ local ActorDefaultValues = {
 	shadowSize = 70, -- the size of the shadow under the actor
 }
 
-local Actor = class("Actor", function()
-	local node = cc.Sprite3D:create()
-	node:setCascadeColorEnabled(true)
-	return node
-	end)
-
 function Actor:ctor()
 	self.action = {}
+
 	table.merge(self, ActorDefaultValues)
 	table.merge(self, ActorCommonValues)
 end
@@ -56,6 +57,36 @@ function Actor:initShadow()
 	circle:setScale(self.shadowSize/16)
 	circle:setOpacity(255*0.7)
 	self:addChild(circle)
+end
+
+function Actor:playAnimation(name, loop)
+    if self.curAnimation ~= name then --using name to check which animation is playing
+        self.sprite3d:stopAllActions()
+        if loop then
+            self.curAnimation3d = cc.RepeatForever:create(self.action[name]:clone())
+        else
+            self.curAnimation3d = self.action[name]:clone()
+        end
+        self.sprite3d:runAction(self.curAnimation3d)
+        self.curAnimation = name
+    end
+end
+
+function Actor:initPuff()
+
+end
+
+function Actor:idleMode() --switch into idle mode
+    self:setStateType(EnumStateType.IDLE)
+    self:playAnimation("idle", true)
+end
+
+function Actor:getStateType()
+    return self.statetype
+end
+
+function Actor:setStateType(type)
+	self.statetype = type
 end
 
 return Actor

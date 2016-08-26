@@ -233,6 +233,7 @@ dependencies: \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/build/../cocos/3d/CCTerrain.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/build/../cocos/3d/JumpBy3D.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/build/../cocos/3d/EffectSprite.h \
+  /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/build/../cocos/3d/EffectSprite3D.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/build/../cocos/vr/CCVRGenericRenderer.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/build/../cocos/vr/CCVRProtocol.h \
   /Volumes/D/GitHub/FantasyWarrior/frameworks/cocos2d-x/build/../cocos/deprecated/CCDeprecated.h \

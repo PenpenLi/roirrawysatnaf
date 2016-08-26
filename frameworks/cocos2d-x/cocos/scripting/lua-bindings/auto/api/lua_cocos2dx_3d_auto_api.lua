@@ -77,6 +77,21 @@
 
 
 --------------------------------------------------------
+-- the cc Effect3D
+-- @field [parent=#cc] Effect3D#Effect3D Effect3D preloaded module
+
+
+--------------------------------------------------------
+-- the cc Effect3DOutline
+-- @field [parent=#cc] Effect3DOutline#Effect3DOutline Effect3DOutline preloaded module
+
+
+--------------------------------------------------------
+-- the cc EffectSprite3D
+-- @field [parent=#cc] EffectSprite3D#EffectSprite3D EffectSprite3D preloaded module
+
+
+--------------------------------------------------------
 -- the cc Bundle3D
 -- @field [parent=#cc] Bundle3D#Bundle3D Bundle3D preloaded module
 
