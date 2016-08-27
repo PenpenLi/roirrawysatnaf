@@ -7343,6 +7343,74 @@ int lua_register_cocos2dx_3d_EffectSprite3D(lua_State* tolua_S)
     return 1;
 }
 
+int lua_cocos2dx_3d_Water_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.Water",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 7)
+    {
+        std::string arg0;
+        std::string arg1;
+        std::string arg2;
+        cocos2d::Size arg3;
+        double arg4;
+        double arg5;
+        double arg6;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.Water:create");
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1, "cc.Water:create");
+        ok &= luaval_to_std_string(tolua_S, 4,&arg2, "cc.Water:create");
+        ok &= luaval_to_size(tolua_S, 5, &arg3, "cc.Water:create");
+        ok &= luaval_to_number(tolua_S, 6,&arg4, "cc.Water:create");
+        ok &= luaval_to_number(tolua_S, 7,&arg5, "cc.Water:create");
+        ok &= luaval_to_number(tolua_S, 8,&arg6, "cc.Water:create");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_3d_Water_create'", nullptr);
+            return 0;
+        }
+        cocos2d::Water* ret = cocos2d::Water::create(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+        object_to_luaval<cocos2d::Water>(tolua_S, "cc.Water",(cocos2d::Water*)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.Water:create",argc, 7);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_3d_Water_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_3d_Water_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (Water)");
+    return 0;
+}
+
+int lua_register_cocos2dx_3d_Water(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.Water");
+    tolua_cclass(tolua_S,"Water","cc.Water","cc.Sprite",nullptr);
+
+    tolua_beginmodule(tolua_S,"Water");
+        tolua_function(tolua_S,"create", lua_cocos2dx_3d_Water_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::Water).name();
+    g_luaType[typeName] = "cc.Water";
+    g_typeCast["Water"] = "cc.Water";
+    return 1;
+}
+
 int lua_cocos2dx_3d_Bundle3D_load(lua_State* tolua_S)
 {
     int argc = 0;
@@ -7797,6 +7865,7 @@ TOLUA_API int register_all_cocos2dx_3d(lua_State* tolua_S)
 	lua_register_cocos2dx_3d_BillBoard(tolua_S);
 	lua_register_cocos2dx_3d_Effect3D(tolua_S);
 	lua_register_cocos2dx_3d_EffectSprite(tolua_S);
+	lua_register_cocos2dx_3d_Water(tolua_S);
 	lua_register_cocos2dx_3d_Mesh(tolua_S);
 	lua_register_cocos2dx_3d_Animate3D(tolua_S);
 	lua_register_cocos2dx_3d_AttachNode(tolua_S);

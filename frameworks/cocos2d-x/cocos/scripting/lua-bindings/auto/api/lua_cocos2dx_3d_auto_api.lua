@@ -92,6 +92,11 @@
 
 
 --------------------------------------------------------
+-- the cc Water
+-- @field [parent=#cc] Water#Water Water preloaded module
+
+
+--------------------------------------------------------
 -- the cc Bundle3D
 -- @field [parent=#cc] Bundle3D#Bundle3D Bundle3D preloaded module
 

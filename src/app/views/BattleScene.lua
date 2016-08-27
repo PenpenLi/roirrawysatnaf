@@ -46,6 +46,14 @@ function BattleScene:UIcontainsPoint(position)
 
 end
 
+function BattleScene:setCamera()
+
+end
+
+function BattleScene:initUILayer()
+
+end
+
 function BattleScene:createBackground()
 	local spriteBg = cc.Sprite3D:create(res_model_bg)
 	self:addChild(spriteBg)
@@ -53,6 +61,13 @@ function BattleScene:createBackground()
 	spriteBg:setPosition3D(cc.vec3(-2300, -1000, 0))
 	spriteBg:setRotation3D(cc.vec3(90, 0, 0))
 	spriteBg:setGlobalZOrder(-10)
+
+	local water = cc.Water:create(res_water[1], res_water[2], res_water[3], 
+		{width=5500, height=400}, 0.77, 0.3797, 1.2)
+	self:addChild(water)
+	water:setPosition3D(cc.vec3(-3500, -580, -110))
+	water:setAnchorPoint(0,0)
+	water:setGlobalZOrder(-10)
 
 end
 
