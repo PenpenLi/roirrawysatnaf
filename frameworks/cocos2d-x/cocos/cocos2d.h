@@ -303,6 +303,7 @@ THE SOFTWARE.
 #include "3d/JumpBy3D.h"
 #include "3d/EffectSprite.h"
 #include "3d/EffectSprite3D.h"
+#include "3d/Water.h"
 
 // vr
 #include "vr/CCVRGenericRenderer.h"

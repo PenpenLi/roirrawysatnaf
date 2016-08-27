@@ -16,16 +16,14 @@ local function main()
 	local director = cc.Director:getInstance()
 	director:setClearColor({r = 1, g = 1, b = 1, a = 1})
 
-	local test = true
+	local targetScene = "BattleScene"
 
-	if test == true then
+	if targetScene == "ChooseRoleScene" then
 		display.loadSpriteFrames("FX/FX.plist", "FX/FX.png")
 		display.loadSpriteFrames("chooseRole/chooserole.plist", "chooseRole/chooserole.png")
-		require("app.MyApp"):create():run("ChooseRoleScene")
-
-	else
-		require("app.MyApp"):create():run("MainScene")
 	end
+
+	require("app.MyApp"):create():run(targetScene)
 	
 end
 

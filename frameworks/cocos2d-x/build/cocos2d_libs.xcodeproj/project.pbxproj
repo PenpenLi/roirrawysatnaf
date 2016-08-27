@@ -3854,6 +3854,8 @@
 		826294331AAF001C00CB7CF7 /* HttpAsynConnection-apple.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2A1A5349A3004E4C60 /* HttpAsynConnection-apple.m */; };
 		826294341AAF003E00CB7CF7 /* HttpClient-apple.mm in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2B1A5349A3004E4C60 /* HttpClient-apple.mm */; };
 		826294351AAF004C00CB7CF7 /* HttpCookie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2C1A5349A3004E4C60 /* HttpCookie.cpp */; };
+		8426F4EB1D712C1E00FB9AC7 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8426F4E91D712C1E00FB9AC7 /* Water.cpp */; };
+		8426F4EC1D712C1E00FB9AC7 /* Water.h in Headers */ = {isa = PBXBuildFile; fileRef = 8426F4EA1D712C1E00FB9AC7 /* Water.h */; };
 		842B91541D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */; };
 		842B91551D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */; };
 		842B91561D6FE57A007A5781 /* EffectSprite3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */; };
@@ -6782,6 +6784,8 @@
 		5E9F61231A3FFE3D0038DE01 /* CCFrustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFrustum.h; sourceTree = "<group>"; };
 		5E9F61241A3FFE3D0038DE01 /* CCPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPlane.cpp; sourceTree = "<group>"; };
 		5E9F61251A3FFE3D0038DE01 /* CCPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPlane.h; sourceTree = "<group>"; };
+		8426F4E91D712C1E00FB9AC7 /* Water.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Water.cpp; sourceTree = "<group>"; };
+		8426F4EA1D712C1E00FB9AC7 /* Water.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Water.h; sourceTree = "<group>"; };
 		842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EffectSprite3D.cpp; sourceTree = "<group>"; };
 		842B91531D6FE57A007A5781 /* EffectSprite3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectSprite3D.h; sourceTree = "<group>"; };
 		844FA14D1D6C2E0D00430C0D /* JumpBy3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpBy3D.cpp; sourceTree = "<group>"; };
@@ -10160,6 +10164,8 @@
 		B29594B81926D61F003EEF37 /* 3d */ = {
 			isa = PBXGroup;
 			children = (
+				8426F4E91D712C1E00FB9AC7 /* Water.cpp */,
+				8426F4EA1D712C1E00FB9AC7 /* Water.h */,
 				842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */,
 				842B91531D6FE57A007A5781 /* EffectSprite3D.h */,
 				845911781D6DB88B009AC85E /* EffectSprite.cpp */,
@@ -11562,6 +11568,7 @@
 				50864CBE1C7BC1B000B3BAB1 /* cpPivotJoint.h in Headers */,
 				B665E2F01AA80A6500DDB1C5 /* CCPULineEmitter.h in Headers */,
 				B6CAB49D1AF9AA1A00B9B856 /* PlatformDefinitions.h in Headers */,
+				8426F4EC1D712C1E00FB9AC7 /* Water.h in Headers */,
 				15AE1B5819AADA9900C27E9E /* UISlider.h in Headers */,
 				1A57011D180BC90D0088DEC7 /* CCGrabber.h in Headers */,
 				B665E3C81AA80A6600DDB1C5 /* CCPUScaleVelocityAffector.h in Headers */,
@@ -14595,6 +14602,7 @@
 				B6CAB4071AF9AA1A00B9B856 /* btMultiBodyJointLimitConstraint.cpp in Sources */,
 				C5F516191C8216C60013B695 /* TabControlReader.cpp in Sources */,
 				B6CAB38F1AF9AA1A00B9B856 /* btRaycastCallback.cpp in Sources */,
+				8426F4EB1D712C1E00FB9AC7 /* Water.cpp in Sources */,
 				15AE1BE619AAE01E00C27E9E /* CCTableViewCell.cpp in Sources */,
 				50ABBEBB1925AB6F00A911A9 /* ccUtils.cpp in Sources */,
 				15AE186A19AAD31D00C27E9E /* CocosDenshion.m in Sources */,
