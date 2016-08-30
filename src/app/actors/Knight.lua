@@ -40,18 +40,22 @@ local mesh_names = {
 }
 
 function Knight:ctor()
-	self.super:ctor()
+	Knight.super.ctor(self)
 
 	self.items = {0, 0, 0}
 
-	table.merge(self, KnightValues)
+	copyTable(KnightValues, self)
 
 	self:init3D()
 	self:initActions()
 
 	self:idleMode()
+	self.AIEnabled = true
 
 	local function update(dt)
+		self:baseUpdate(dt)
+		self:stateMachineUpdate(dt)
+		self:movementUpdate(dt)
 
 	end
 	self:scheduleUpdate(update)

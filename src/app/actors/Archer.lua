@@ -40,17 +40,22 @@ local mesh_names = {
 local Archer = class("Archer", Actor)
 
 function Archer:ctor()
+	Archer.super.ctor(self)
+	
 	self.items = {0, 0, 0}
 
-	table.merge(self, ArcherValues)
+	copyTable(ArcherValues, self)
 
 	self:init3D()
 	self:initActions()
 
 	self:idleMode()
+	self.AIEnabled = true
 
 	local function update(dt)
-
+		self:baseUpdate(dt)
+		self:stateMachineUpdate(dt)
+		self:movementUpdate(dt)
 	end
 	self:scheduleUpdate(update)
 
@@ -66,6 +71,7 @@ function Archer:init3D()
 	self.sprite3d:setRotation3D({x = 90, y = 0, z = 0})        
 	self.sprite3d:setRotation(-90)
 
+	self:setDefaultEqt()
 end
 
 function Archer:initActions()

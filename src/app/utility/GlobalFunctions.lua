@@ -27,3 +27,18 @@ local function CreateEnumTable(tbl, index)
 end
 
 cc.exports.CreateEnumTable = CreateEnumTable
+
+local function getPosTable(obj)
+    local posX,posY = obj:getPosition()
+    return {x= posX,y=posY} 
+end
+
+cc.exports.getPosTable = getPosTable
+
+local function copyTable(t1, t2)
+    for key, var in pairs(t1) do
+        t2[key] = var
+    end
+end
+
+cc.exports.copyTable = copyTable

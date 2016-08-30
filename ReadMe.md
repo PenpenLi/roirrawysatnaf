@@ -2,6 +2,18 @@
 
 FantasyWarrior3D是cocos官网上面的一个3Ddemo，是基于cocos2d-x 3.4开发的。现在我打算基于cocos2d-x 3.12重新写这个demo，希望可以借此熟悉3.12的引擎以及3d的相关使用。  
 
+####1.3
+1. 基本完成`BattleScene.lua`, `BattlefieldUI.lua`, `GameMaster.lua`, `Manager.lua`, `Dragon.lua`, `Rat.lua`, `Piglet.lua`, `GlobalFunction.lua`, `List.lua`.
+2. 战斗的UI部分都放在`BattlefieldUI`中，`GameMaster`用于控制hero和monster在战场中的投放，`Manager`作为全局变量存放战场中各种类的容器。
+3. `cc.Camera`的使用在3D中很重要，第一次接触，还有待进一步了解。
+4. `GlobalFunction`存放全局的方法，`CreateEnumTable`使用的时候注意参数名字不要跟枚举名字相同，防止在定义枚举的方法下面用到枚举。
+5. `List`是基于table的重新封装，类似队列，但是比队列更开放。
+6. 游戏中人物的逻辑基本都在`Actor`中实现，通过`update`,其中AI部分，不同的人物AI计算的时间间隔是不一样的。
+
+		rad	角度转弧度	math.rad(180)	3.1415926535898     DEGREES_TO_RADIANS       
+		deg	弧度转角度	math.deg(math.pi)	180    RADIANS_TO_DEGREES
+
+
 ####1.2
 1. 完成`ChooseRoleScene.lua`，将自定义类`EffectSprite3D`绑定到lua中。
 2. 修改simulator的大小，在sublime的quick插件中。

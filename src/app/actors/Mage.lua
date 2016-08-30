@@ -40,16 +40,22 @@ local mesh_names = {
 local Mage = class("Mage", Actor)
 
 function Mage:ctor()
+	Mage.super.ctor(self)
+
 	self.items = {0, 0, 0}
 
-	table.merge(self, MageValues)
+	copyTable(MageValues, self)
 
 	self:init3D()
 	self:initActions()
 
 	self:idleMode()
+	self.AIEnabled = true
 
 	local function update(dt)
+		self:baseUpdate(dt)
+		self:stateMachineUpdate(dt)
+		self:movementUpdate(dt)
 
 	end
 	self:scheduleUpdate(update)

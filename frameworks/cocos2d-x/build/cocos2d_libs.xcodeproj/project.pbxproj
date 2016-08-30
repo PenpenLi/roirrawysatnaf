@@ -3862,6 +3862,10 @@
 		842B91571D6FE57A007A5781 /* EffectSprite3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 842B91531D6FE57A007A5781 /* EffectSprite3D.h */; };
 		842B91581D6FE57A007A5781 /* EffectSprite3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 842B91531D6FE57A007A5781 /* EffectSprite3D.h */; };
 		842B91591D6FE57A007A5781 /* EffectSprite3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 842B91531D6FE57A007A5781 /* EffectSprite3D.h */; };
+		843D73201D74372C00FC1A46 /* Water.h in Headers */ = {isa = PBXBuildFile; fileRef = 8426F4EA1D712C1E00FB9AC7 /* Water.h */; };
+		843D73211D74372D00FC1A46 /* Water.h in Headers */ = {isa = PBXBuildFile; fileRef = 8426F4EA1D712C1E00FB9AC7 /* Water.h */; };
+		843D73221D74372F00FC1A46 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8426F4E91D712C1E00FB9AC7 /* Water.cpp */; };
+		843D73231D74373000FC1A46 /* Water.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8426F4E91D712C1E00FB9AC7 /* Water.cpp */; };
 		844FA14F1D6C2E0D00430C0D /* JumpBy3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 844FA14D1D6C2E0D00430C0D /* JumpBy3D.cpp */; };
 		844FA1501D6C2E0D00430C0D /* JumpBy3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 844FA14E1D6C2E0D00430C0D /* JumpBy3D.h */; };
 		845911321D6D3AC3009AC85E /* JumpBy3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 844FA14D1D6C2E0D00430C0D /* JumpBy3D.cpp */; };
@@ -13230,6 +13234,7 @@
 				507B40621C31BDD30067B53E /* btConvexCast.h in Headers */,
 				507B40631C31BDD30067B53E /* CCComRender.h in Headers */,
 				507B40641C31BDD30067B53E /* CCPUGeometryRotator.h in Headers */,
+				843D73211D74372D00FC1A46 /* Water.h in Headers */,
 				507B40651C31BDD30067B53E /* LocalStorage.h in Headers */,
 				507B40661C31BDD30067B53E /* AudioCache.h in Headers */,
 				507B40671C31BDD30067B53E /* btHeightfieldTerrainShape.h in Headers */,
@@ -13716,6 +13721,7 @@
 				B29A7E0E19EE1B7700872B35 /* Bone.h in Headers */,
 				B665E2BD1AA80A6500DDB1C5 /* CCPUForceFieldAffectorTranslator.h in Headers */,
 				B60C5BD719AC68B10056FBDE /* CCBillBoard.h in Headers */,
+				843D73201D74372C00FC1A46 /* Water.h in Headers */,
 				5030C0431CE6DF8B00C5D3E7 /* CCVRGenericHeadTracker.h in Headers */,
 				B230ED7419B417AE00364AA8 /* CCTrianglesCommand.h in Headers */,
 				B665E2911AA80A6500DDB1C5 /* CCPUDynamicAttributeTranslator.h in Headers */,
@@ -15659,6 +15665,7 @@
 				507B3AD11C31BDD30067B53E /* MathUtil.cpp in Sources */,
 				507B3AD21C31BDD30067B53E /* DetourNavMeshQuery.cpp in Sources */,
 				507B3AD31C31BDD30067B53E /* CCDataVisitor.cpp in Sources */,
+				843D73231D74373000FC1A46 /* Water.cpp in Sources */,
 				507B3AD41C31BDD30067B53E /* SpuContactManifoldCollisionAlgorithm.cpp in Sources */,
 				507B3AD51C31BDD30067B53E /* CCNode.cpp in Sources */,
 				507B3AD61C31BDD30067B53E /* CCDrawingPrimitives.cpp in Sources */,
@@ -16310,6 +16317,7 @@
 				503DD8EE1926736A00CD74DD /* CCImage-ios.mm in Sources */,
 				B6CAB2941AF9AA1A00B9B856 /* btCompoundShape.cpp in Sources */,
 				B6CAB39A1AF9AA1A00B9B856 /* btVoronoiSimplexSolver.cpp in Sources */,
+				843D73221D74372F00FC1A46 /* Water.cpp in Sources */,
 				46A170FC1807CECB005B8026 /* CCPhysicsBody.cpp in Sources */,
 				15AE1BEA19AAE01E00C27E9E /* CCControlButton.cpp in Sources */,
 				50ABBD941925AB4100A911A9 /* CCGLProgramState.cpp in Sources */,
