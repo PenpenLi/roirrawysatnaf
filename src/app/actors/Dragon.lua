@@ -7,6 +7,7 @@
 ]]
 
 local Actor = require("app.actors.Actor")
+require("app.controllers.AttackCommand")
 
 local Dragon = class("Dragon", Actor)
 
@@ -65,6 +66,14 @@ function Dragon:reset()
     self:setPositionZ(0)
 end
 
+function Dragon:doNormalAttack()
+    self:normalAttackSoundEffects()
+    DragonAttack.new(getPosTable(self), self.curFacing, self.normalAttack)
+end
+
+function Dragon:normalAttackSoundEffects()
+    ccexp.AudioEngine:play2d(MonsterDragonValues.attack, false,1)
+end
 
 
 return Dragon

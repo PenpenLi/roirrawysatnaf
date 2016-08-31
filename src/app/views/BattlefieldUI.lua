@@ -317,4 +317,106 @@ function BattlefieldUI:avatarInit()
 
 end
 
+function BattlefieldUI:heroDead(hero)
+    if hero._name =="Knight" then
+        cc.GreyShader:setGreyShader(self.KnightPng)
+        cc.GreyShader:setGreyShader(self.KnightPngFrame)    
+        self.KnightAngryFullSignal:setVisible(false)   
+        self.KnightAngryClone:setVisible(false)
+    elseif hero._name =="Mage" then
+        cc.GreyShader:setGreyShader(self.MagePng)
+        cc.GreyShader:setGreyShader(self.MagePngFrame)
+        self.MageAngryFullSignal:setVisible(false)
+        self.MageAngryClone:setVisible(false)
+    elseif hero._name=="Archer" then
+        cc.GreyShader:setGreyShader(self.ArcherPng)
+        cc.GreyShader:setGreyShader(self.ArcherPngFrame)
+        self.ArcherAngryFullSignal:setVisible(false)
+        self.ArcherAngryClone:setVisible(false)                
+    end
+end
+
+function BattlefieldUI:bloodDrop(heroActor)
+    local progressTo
+    local progressToClone
+    local tintTo
+    local percent = heroActor.hp/heroActor.maxhp*100
+    heroActor.bloodBar:stopAllActions()
+    heroActor.bloodBarClone:stopAllActions()
+    heroActor.avatar:runAction(BattlefieldUI:shakeAvatar())
+    
+    if heroActor.hp > 0 and percent>50 then
+
+        progressTo = cc.ProgressTo:create(0.3,percent)
+        progressToClone = cc.ProgressTo:create(1,percent)
+        heroActor.bloodBar:runAction(progressTo)
+        heroActor.bloodBarClone:runAction(progressToClone)
+        
+    elseif heroActor.hp>0 and percent <=50 then
+        
+        progressTo = cc.ProgressTo:create(0.3,percent)
+        progressToClone = cc.ProgressTo:create(1,percent) 
+        tintTo = cc.TintTo:create(0.5,254,225,26)   
+        
+        heroActor.bloodBar:runAction(cc.Spawn:create(progressTo,tintTo))
+        heroActor.bloodBarClone:runAction(progressToClone)
+    elseif heroActor.hp>0 and percent <=30 then
+
+        progressTo = cc.ProgressTo:create(0.3,percent)
+        progressToClone = cc.ProgressTo:create(1,percent) 
+        
+        tintTo = cc.TintTo:create(0.5,254,26,69)   
+        heroActor.bloodBar:runAction(cc.Spawn:create(progressTo,tintTo))
+        heroActor.bloodBarClone:runAction(progressToClone)
+    elseif heroActor.hp  <=0 then
+        progressTo = cc.ProgressTo:create(0.3,0)
+        progressToClone = cc.ProgressTo:create(1,2)
+        
+        heroActor.bloodBar:runAction(progressTo)
+        heroActor.bloodBarClone:runAction(progressToClone)
+    end
+end
+
+function BattlefieldUI:angryChange(angry)
+    local tintTo
+    local percent = angry.angry / angry.angryMax * 100
+    local progressTo = cc.ProgressTo:create(0.3,percent)
+    local progressToClone = cc.ProgressTo:create(1,percent+2)   
+    
+    local bar
+    if angry.name == KnightValues.name then
+        bar = self.KnightAngry
+        if percent>=100 then
+            self.KnightAngryFullSignal:setVisible(true)
+        elseif percent == 0 then
+            self.KnightAngryFullSignal:setVisible(false)                
+        end
+    elseif angry.name == ArcherValues.name then
+        bar = self.ArcherAngry
+        if percent>=100 then
+            self.ArcherAngryFullSignal:setVisible(true)
+        elseif percent == 0 then
+            self.ArcherAngryFullSignal:setVisible(false)                
+        end
+    elseif angry.name == MageValues.name then
+        bar = self.MageAngry
+        if percent>=100 then
+            self.MageAngryFullSignal:setVisible(true)
+        elseif percent == 0 then
+            self.MageAngryFullSignal:setVisible(false)                
+        end
+    end
+    
+    bar:runAction(progressTo)
+end
+
+function BattlefieldUI:shakeAvatar()
+    return cc.Repeat:create(cc.Spawn:create(cc.Sequence:create(cc.ScaleTo:create(0.075,0.75),
+                                            cc.ScaleTo:create(0.075,0.7)),
+                                            cc.Sequence:create(cc.MoveBy:create(0.05,{x=6.5,y=0}),
+                                            cc.MoveBy:create(0.05,{x=-13,y=0}),
+                                            cc.MoveBy:create(0.05,{x=6.5,y=0}))),2)
+end
+
+
 return BattlefieldUI

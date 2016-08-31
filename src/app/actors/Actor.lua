@@ -6,6 +6,9 @@
 	人物基类
 ]]
 
+local HPCounter = require("app.views.HPCounter")
+require("app.controllers.AttackCommand")
+
 local Actor = class("Actor", function()
 	local node = cc.Sprite3D:create()
 	node:setCascadeColorEnabled(true)
@@ -17,6 +20,16 @@ function Actor:ctor()
 
     copyTable(ActorDefaultValues, self)
     copyTable(ActorCommonValues, self)
+
+    self.hpCounter = HPCounter.new()
+    self:addChild(self.hpCounter)
+
+    self.effectNode = cc.Node:create()
+    self.monsterHeight = 70
+    self.heroHeight = 150
+    if uiLayer ~= nil then
+        currentLayer:addChild(self.effectNode)
+    end
 
 end
 
@@ -40,10 +53,6 @@ function Actor:playAnimation(name, loop)
     end
 end
 
-function Actor:initPuff()
-
-end
-
 function Actor:idleMode() --switch into idle mode
     self:setStateType(EnumStateType.IDLE)
     self:playAnimation("idle", true)
@@ -58,6 +67,52 @@ function Actor:attackMode() --switch into walk mode
     self:setStateType(EnumStateType.ATTACKING)
     self:playAnimation("idle", true)
     self.attackTimer = self.attackFrequency*3/4
+end
+
+function Actor:dyingMode(knockSource, knockAmount)
+    self:setStateType(EnumStateType.DYING)
+    self:playAnimation("dead")
+    self:playDyingEffects()
+
+    if self.racetype == EnumRaceType.HERO then
+        uiLayer:heroDead(self)
+        List.removeObj(HeroManager,self) 
+        self:runAction(cc.Sequence:create(
+            cc.DelayTime:create(3),
+            cc.MoveBy:create(1.0,cc.vec3(0,0,-50)),
+            cc.RemoveSelf:create()))
+        
+        self.angry = 0
+        -- local anaryChange = {_name = self._name, _angry = self._angry, _angryMax = self._angryMax}
+        -- MessageDispatchCenter:dispatchMessage(MessageDispatchCenter.MessageType.ANGRY_CHANGE, anaryChange)          
+    else
+        List.removeObj(MonsterManager,self) 
+        local function recycle()
+            self:setVisible(false)
+            List.pushlast(getPoolByName(self.name),self)
+        end
+        self:runAction(cc.Sequence:create(
+            cc.DelayTime:create(3),
+            cc.MoveBy:create(1.0,cc.vec3(0,0,-50)),
+            cc.CallFunc:create(recycle)))
+    end
+
+end
+
+function Actor:knockMode(collider, dirKnockMode)
+    self:setStateType(EnumStateType.KNOCKING)
+    self:playAnimation("knocked")
+    self.timeKnocked = self.aliveTime
+    local p = self.myPos
+    local angle 
+    if dirKnockMode then
+        angle = collider.facing
+    else
+        angle = cc.pToAngleSelf(cc.pSub(p, getPosTable(collider)))
+    end
+    local newPos = cc.pRotateByAngle(cc.pAdd({x=collider.knock,y=0}, p),p,angle)
+    self:runAction(cc.EaseCubicActionOut:create(cc.MoveTo:create(self.action.knocked:getDuration()*3,newPos)))
+--    self:setCascadeColorEnabled(true)--if special attack is interrupted then change the value to true      
 end
 
 function Actor:getStateType()
@@ -225,40 +280,58 @@ function Actor:walkUpdate(dt)
     end
 end
 
+function Actor:normalAttackSoundEffects()
+-- to override
+end
+
+--======attacking collision check
+function Actor:doNormalAttack()
+    BasicCollider.create(self.myPos, self.curFacing, self.normalAttack)
+    self:normalAttackSoundEffects()
+end
+
 function Actor:attackUpdate(dt)   
     self.attackTimer = self.attackTimer + dt
     if self.attackTimer > self.attackFrequency then
         self.attackTimer = self.attackTimer - self.attackFrequency
-        -- local function playIdle()
-        --     self:playAnimation("idle", true)
-        --     self.cooldown = false
-        -- end
-        -- --time for an attack, which attack should i do?
-        -- local random_special = math.random()
-        -- if random_special > self.specialAttackChance then
-        --     local function createCol()
-        --         self:normalAttack()
-        --     end
-        --     local attackAction = cc.Sequence:create(self._action.attack1:clone(),cc.CallFunc:create(createCol),self._action.attack2:clone(),cc.CallFunc:create(playIdle))
-        --     self._sprite3d:stopAction(self._curAnimation3d)
-        --     self._sprite3d:runAction(attackAction)
-        --     self._curAnimation = attackAction
-        --     self._cooldown = true
-        -- else
-        --     self:setCascadeColorEnabled(false)--special attack does not change color affected by its parent node    
-        --     local function createCol()        
-        --         self:specialAttack()
-        --     end
-        --     local messageParam = {speed = 0.2, pos = self._myPos, dur= self._specialSlowTime , target=self}
-        --     --cclog("calf speed:%.2f", messageParam.speed)
-        --     MessageDispatchCenter:dispatchMessage(MessageDispatchCenter.MessageType.SPECIAL_PERSPECTIVE, messageParam)                      
-            
-        --     local attackAction = cc.Sequence:create(self._action.specialattack1:clone(),cc.CallFunc:create(createCol),self._action.specialattack2:clone(),cc.CallFunc:create(playIdle))
-        --     self._sprite3d:stopAction(self._curAnimation3d)
-        --     self._sprite3d:runAction(attackAction)
-        --     self._curAnimation = attackAction
-        --     self._cooldown = true
-        -- end
+        local function playIdle()
+            self:playAnimation("idle", true)
+            self.cooldown = false
+        end
+        --time for an attack, which attack should i do?
+        local random_special = math.random()
+        if random_special > self.specialAttackChance then
+            local function createCol()
+                self:doNormalAttack()
+            end
+            local attackAction = cc.Sequence:create(self.action.attack1:clone(),
+                cc.CallFunc:create(createCol),
+                self.action.attack2:clone(),
+                cc.CallFunc:create(playIdle))
+            self.sprite3d:stopAction(self.curAnimation3d)
+            self.sprite3d:runAction(attackAction)
+            self.curAnimation = attackAction
+            self.cooldown = true
+        else
+            self:setCascadeColorEnabled(false)--special attack does not change color affected by its parent node    
+            local function createCol()        
+                self:doSpecialAttack()
+            end
+            local messageParam = {speed = 0.2, pos = self.myPos, dur = self.specialSlowTime, target = self}                
+            local event = cc.EventCustom:new(MessageType.SPECIAL_PERSPECTIVE)
+            event._usedata = messageParam
+            local eventDispatcher = self:getEventDispatcher()
+            eventDispatcher:dispatchEvent(event)
+
+            local attackAction = cc.Sequence:create(self.action.specialattack1:clone(),
+                cc.CallFunc:create(createCol), 
+                self.action.specialattack2:clone(),
+                cc.CallFunc:create(playIdle))
+            self.sprite3d:stopAction(self.curAnimation3d)
+            self.sprite3d:runAction(attackAction)
+            self.curAnimation = attackAction
+            self.cooldown = true
+        end
     end
 end
 
@@ -297,6 +370,89 @@ function Actor:movementUpdate(dt)
         local targetPosition = cc.pRotateByAngle(cc.pAdd({x=self.curSpeed*dt,y=0},p1),p1,self.curFacing)
         self:setPosition(targetPosition)
     end
+end
+
+function Actor:hurt(collider, dirKnockMode)
+    if self.isalive == true then 
+        --TODO add sound effect                    
+        local damage = collider.damage
+        --calculate the real damage
+        local critical = false
+        local knock = collider.knock
+        if math.random() < collider.criticalChance then
+            damage = damage*1.5
+            critical = true
+            knock = knock*2
+        end
+        damage = damage + damage * math.random(-1,1) * 0.15        
+        damage = damage - self.defense
+        damage = math.floor(damage)
+
+        if damage <= 0 then
+            damage = 1
+        end
+
+        self.hp = self.hp - damage
+        
+        if self.hp > 0 then
+            if collider.knock and damage ~= 1 then
+                self:knockMode(collider, dirKnockMode)
+                self:hurtSoundEffects()
+            else
+                self:hurtSoundEffects()
+            end
+        else
+            self.hp = 0
+            self.isalive = false
+            self:dyingMode(getPosTable(collider),knock)        
+        end
+        
+        --three param judge if crit
+        local blood = self.hpCounter:showBloodLossNum(damage,self,critical)
+        blood:setCameraMask(UserCameraFlagMask)
+        self:addEffect(blood)
+        return damage        
+    end
+    return 0
+
+end
+
+function Actor:doSpecialAttack()
+    BasicCollider.create(self.myPos, self.curFacing, self.specialAttack)
+    self:specialAttackSoundEffects()
+end
+
+function Actor:hurtSoundEffects()
+-- to override
+end
+
+function Actor:playDyingEffects()
+   -- override
+end
+
+function Actor:specialAttackSoundEffects()
+-- to override
+end
+
+function Actor:addEffect(effect)
+    effect:setPosition(cc.pAdd(getPosTable(self),getPosTable(effect)))
+    if self.racetype ~= EnumRaceType.MONSTER then
+        effect:setPositionZ(self:getPositionZ()+self.heroHeight)
+    else
+        effect:setPositionZ(self:getPositionZ()+self.monsterHeight+effect:getPositionZ())
+    end
+    currentLayer:addChild(effect)
+end
+
+function Actor:initPuff()
+    local puff = cc.BillboardParticleSystem:create(ParticleManager:getInstance():getPlistData("walkpuff"))
+    local puffFrame = cc.SpriteFrameCache:getInstance():getSpriteFrame("walkingPuff.png")
+    puff:setTextureWithRect(puffFrame:getTexture(), puffFrame:getRect())
+    puff:setScale(1.5)
+    puff:setGlobalZOrder(0)
+    puff:setPositionZ(10)
+    self.puff = puff
+    self.effectNode:addChild(puff)
 end
 
 

@@ -35,6 +35,19 @@ end
 
 cc.exports.getPosTable = getPosTable
 
+--radiansNormalizer
+local function radNormalize(rad)
+    local pi2 = 2*math.pi
+    rad = rad % pi2
+    rad = (rad + pi2)%pi2
+    if rad > math.pi then
+        rad = rad - math.pi
+    end
+    return rad
+end
+
+cc.exports.radNormalize = radNormalize
+
 local function copyTable(t1, t2)
     for key, var in pairs(t1) do
         t2[key] = var
@@ -42,3 +55,16 @@ local function copyTable(t1, t2)
 end
 
 cc.exports.copyTable = copyTable
+
+local function delayExecute(target, func, delay)
+    local wait = cc.DelayTime:create(delay)
+    target:runAction(cc.Sequence:create(wait, cc.CallFunc:create(func)))
+end
+
+cc.exports.delayExecute = delayExecute
+
+
+
+
+
+

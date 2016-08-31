@@ -14,6 +14,7 @@ cc.exports.CelLine = 0.009
 cc.exports.font_actor = "chooseRole/actor_param.ttf"
 cc.exports.UserCameraFlagMask = 2
 cc.exports.UIZorder = 2000
+cc.exports.FXZorder = 1999
 
 -- Audios
 cc.exports.BGM_RES = {
@@ -36,10 +37,40 @@ cc.exports.WarriorProperty =
     dead = "audios/effects/knight/dead.mp3"
 }
 
+--Monster Dragon
+cc.exports.MonsterDragonValues = 
+{
+    fileName = "model/dragon/dragon.c3b",
+    attack = "audios/effects/dragon/Fire.mp3",
+    fireHit = "audios/effects/dragon/fireHit.mp3",
+    wounded="audios/effects/dragon/hurt.mp3",
+    dead="audios/effects/dragon/dead.mp3"
+}
+
+--Some common audios
+cc.exports.CommonAudios =
+{
+    hit = "audios/effects/hit20.mp3"
+}
+
 -- play2d id
 cc.exports.AUDIO_ID = {
 	MAINMENUBGM,
 	CHOOSEROLECHAPTERBGM,
+    KNIGHTNORMALATTACK,
+}
+
+cc.exports.MessageType = {}
+MessageType = {
+    BLOOD_MINUS = "BLOOD_MINUS",
+    REDUCE_SCORE = "REDUCE_SCORE",
+    KNOCKED = "KNOCKED",
+    KNOCKEDAOE = "KNOCKEDAOE",
+    SPECIAL_PERSPECTIVE = "SPECIAL_PERSPECTIVE",
+    SPECIAL_KNIGHT = "SPECIAL_KNIGHT",
+    SPECIAL_ARCHER = "SPECIAL_ARCHER",
+    SPECIAL_MAGE = "SPECIAL_MAGE",
+    ANGRY_CHANGE = "ANGRY_CHANGE",
 }
 
 ---------------------------------------------------------

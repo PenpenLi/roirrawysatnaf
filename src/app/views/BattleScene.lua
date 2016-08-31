@@ -23,24 +23,82 @@ local BattleScene = class("BattleScene", cc.load("mvc").ViewBase)
 function BattleScene:onCreate()
 	cc.Texture2D:setDefaultAlphaPixelFormat(cc.TEXTURE2_D_PIXEL_FORMAT_RG_B565)
 
-	self:setCascadeColorEnabled(true)
+	cc.exports.currentLayer = cc.Layer:create()
+	currentLayer:setCascadeColorEnabled(true)
+	self:addChild(currentLayer)
 
+	self:loadAnimationCache()
 	self:enableTouch()
 	self:createBackground()
 	self:initUILayer()
 
-	self.gameMaster = GameMaster.new(self)
+	self.gameMaster = GameMaster.new()
 
 	self:setCamera()
 
 	local function gameController(dt)
 		self.gameMaster:update(dt)
 		-- collisionDetect(dt)
-		-- solveAttacks(dt)
+		solveAttacks(dt)
 		self:moveCamera(dt)
 	end
 
 	self.gameControllerScheduleID = cc.Director:getInstance():getScheduler():scheduleScriptFunc(gameController, 0, false)
+
+	local function bloodMinus(heroActor)
+	    uiLayer:bloodDrop(heroActor._usedata)
+	end
+
+	local function angryChange(angry)
+	    uiLayer:angryChange(angry._usedata)
+	end
+
+	local function specialPerspective(param)
+		local userData = param._usedata
+	    if specialCamera.valid == true then return end
+	    
+	    specialCamera.position = userData.pos
+	    specialCamera.valid = true
+	    currentLayer:setColor(cc.c3b(125, 125, 125))--deep grey
+
+	    local function restoreTimeScale()
+	        specialCamera.valid = false
+	        currentLayer:setColor(cc.c3b(255, 255, 255))--default white        
+	        cc.Director:getInstance():getScheduler():setTimeScale(1.0)
+	        userData.target:setCascadeColorEnabled(true)--restore to the default state  
+	    end    
+	    delayExecute(currentLayer, restoreTimeScale, userData.dur)
+
+	    cc.Director:getInstance():getScheduler():setTimeScale(userData.speed)
+	end
+
+	local eventDispatcher = self:getEventDispatcher()
+	local listener = cc.EventListenerCustom:create(MessageType.BLOOD_MINUS, bloodMinus)
+	eventDispatcher:addEventListenerWithFixedPriority(listener, 1)
+	listener = cc.EventListenerCustom:create(MessageType.ANGRY_CHANGE, angryChange)
+	eventDispatcher:addEventListenerWithFixedPriority(listener, 1)
+	listener = cc.EventListenerCustom:create(MessageType.SPECIAL_PERSPECTIVE, specialPerspective)
+	eventDispatcher:addEventListenerWithFixedPriority(listener, 1)
+
+end
+
+function BattleScene:loadAnimationCache()
+	local hurtAnimation = cc.Animation:create()
+	local name
+	for i=1,5 do
+	    name = "hit"..i..".png"
+	    hurtAnimation:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(name))
+	end
+	hurtAnimation:setDelayPerUnit(0.1)
+	display.setAnimationCache("hurtAnimation", hurtAnimation)
+
+	local fireBallAnim = cc.Animation:create()
+	for i=2,5 do
+	    name = "fireball"..i..".png"
+	    fireBallAnim:addSpriteFrame(cc.SpriteFrameCache:getInstance():getSpriteFrame(name))
+	end
+	fireBallAnim:setDelayPerUnit(0.1)
+	display.setAnimationCache("fireBallAnim", fireBallAnim)
 
 end
 
@@ -51,20 +109,27 @@ function BattleScene:enableTouch()
 	end
 	
 	local function onTouchMoved(touch,event)
-		local delta = touch:getDelta()
-		cameraOffset = cc.pGetClampPoint(cc.pSub(cameraOffset, delta),cameraOffsetMin,cameraOffsetMax)
-
+		if self:UIcontainsPoint(touch:getLocation()) == nil then
+		    local delta = touch:getDelta()
+		    cameraOffset = cc.pGetClampPoint(cc.pSub(cameraOffset, delta),cameraOffsetMin,cameraOffsetMax)
+		end
 	end
 	
 	local function onTouchEnded(touch,event)
-
+		local location = touch:getLocation()
+		local message = self:UIcontainsPoint(location)
+		if message ~= nil then
+			local eventDispatcher = self:getEventDispatcher()
+			local event = cc.EventCustom:new(message)
+			eventDispatcher:dispatchEvent(event)
+		end
 	end
 
 	local touchEventListener = cc.EventListenerTouchOneByOne:create()
 	touchEventListener:registerScriptHandler(onTouchBegin, cc.Handler.EVENT_TOUCH_BEGAN)
 	touchEventListener:registerScriptHandler(onTouchMoved, cc.Handler.EVENT_TOUCH_MOVED)
 	touchEventListener:registerScriptHandler(onTouchEnded, cc.Handler.EVENT_TOUCH_ENDED)
-	self:getEventDispatcher():addEventListenerWithSceneGraphPriority(touchEventListener, self)        
+	currentLayer:getEventDispatcher():addEventListenerWithSceneGraphPriority(touchEventListener, currentLayer)        
 
 end
 
@@ -75,7 +140,9 @@ function BattleScene:moveCamera(dt)
     local cameraPosition = getPosTable(self.camera)
     local focusPoint = getFocusPointOfHeros()
     if specialCamera.valid == true then
-        local position = cc.pLerp(cameraPosition, cc.p(specialCamera.position.x, (cameraOffset.y + focusPoint.y-display.height*3/4)*0.5), 5*dt)
+        local position = cc.pLerp(cameraPosition, 
+        	cc.p(specialCamera.position.x, (cameraOffset.y + focusPoint.y-display.height*3/4)*0.5), 
+        	5*dt)
         
         self.camera:setPosition(position)
         self.camera:lookAt(cc.vec3(position.x, specialCamera.position.y, 50.0), cc.vec3(0.0, 1.0, 0.0))
@@ -90,40 +157,58 @@ end
 
 
 function BattleScene:UIcontainsPoint(position)
+	local message  = nil
 
+	local rectKnight = uiLayer.KnightPngFrame:getBoundingBox()
+	local rectArcher = uiLayer.ArcherPngFrame:getBoundingBox()
+	local rectMage = uiLayer.MagePngFrame:getBoundingBox()
+	
+	if cc.rectContainsPoint(rectKnight, position) and uiLayer.KnightAngry:getPercentage() == 100 then
+	    --cclog("rectKnight")
+	    message = MessageType.SPECIAL_KNIGHT        
+	elseif cc.rectContainsPoint(rectArcher, position) and uiLayer.ArcherAngry:getPercentage() == 100  then
+	    --cclog("rectArcher")
+	    message = MessageType.SPECIAL_ARCHER   
+	elseif cc.rectContainsPoint(rectMage, position)  and uiLayer.MageAngry:getPercentage() == 100 then
+	    --cclog("rectMage")
+	    message = MessageType.SPECIAL_MAGE         
+	end   
+	    
+	return message 
 end
 
 function BattleScene:setCamera()
 	self.camera = cc.Camera:createPerspective(60.0, display.width/display.height, 10.0, 4000.0)
 	self.camera:setGlobalZOrder(10)
 	self.camera:setCameraFlag(UserCameraFlagMask)
-	self:addChild(self.camera)
-	self:setCameraMask(UserCameraFlagMask)
+	currentLayer:addChild(self.camera)
+	currentLayer:setCameraMask(UserCameraFlagMask)
 
-	-- for val = HeroManager.first, HeroManager.last do
-	--     local sprite = HeroManager[val]
-	--     if sprite._puff then
-	--         sprite._puff:setCamera(camera)
-	--     end
-	-- end      
+	for val = HeroManager.first, HeroManager.last do
+	    local sprite = HeroManager[val]
+	    if sprite.puff then
+	        sprite.puff:setCamera(camera)
+	    end
+	end      
 	
-	self.uiLayer:setCameraMask(UserCameraFlagMask)
-	self.camera:addChild(self.uiLayer)
+	uiLayer:setCameraMask(UserCameraFlagMask)
+	self.camera:addChild(uiLayer)
 
 end
 
 function BattleScene:initUILayer()
-	self.uiLayer = BattlefieldUI.new()
-	self.uiLayer:setPositionZ(-cc.Director:getInstance():getZEye()/4)
-	self.uiLayer:setScale(0.25)
-	self.uiLayer:setIgnoreAnchorPointForPosition(false)
-	self.uiLayer:setGlobalZOrder(3000)
+	local uiLayer = BattlefieldUI.new()
+	cc.exports.uiLayer = uiLayer
+	uiLayer:setPositionZ(-cc.Director:getInstance():getZEye()/4)
+	uiLayer:setScale(0.25)
+	uiLayer:setIgnoreAnchorPointForPosition(false)
+	uiLayer:setGlobalZOrder(3000)
 
 end
 
 function BattleScene:createBackground()
 	local spriteBg = cc.Sprite3D:create(res_model_bg)
-	self:addChild(spriteBg)
+	currentLayer:addChild(spriteBg)
 	spriteBg:setScale(2.65)
 	spriteBg:setPosition3D(cc.vec3(-2300, -1000, 0))
 	spriteBg:setRotation3D(cc.vec3(90, 0, 0))
@@ -131,7 +216,7 @@ function BattleScene:createBackground()
 
 	local water = cc.Water:create(res_water[1], res_water[2], res_water[3], 
 		{width=5500, height=400}, 0.77, 0.3797, 1.2)
-	self:addChild(water)
+	currentLayer:addChild(water)
 	water:setPosition3D(cc.vec3(-3500, -580, -110))
 	water:setAnchorPoint(0,0)
 	water:setGlobalZOrder(-10)

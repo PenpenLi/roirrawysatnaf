@@ -25,8 +25,7 @@ local EXIST_MIN_MONSTER = 4
 
 local GameMaster = class("GameMaster")
 
-function GameMaster:ctor(layer)
-	self.currentLayer = layer
+function GameMaster:ctor()
 	self.totaltime = 0
 	self.logicFrq = 1.0
 
@@ -72,19 +71,21 @@ end
 function GameMaster:addHeros()
 	local knight = Knight.new()
    	knight:setPosition(battleSiteX[1], 10)
-    self.currentLayer:addChild(knight)
+    currentLayer:addChild(knight)
     knight:idleMode()
     List.pushlast(HeroManager, knight)
 
+    do return end
+
 	local mage = Mage.new()
    	mage:setPosition(battleSiteX[1], 100)
-   	self.currentLayer:addChild(mage)
+   	currentLayer:addChild(mage)
    	mage:idleMode()
    	List.pushlast(HeroManager, mage)
    	
     local archer = Archer.new()
     archer:setPosition(battleSiteX[1], -80)
-    self.currentLayer:addChild(archer)
+    currentLayer:addChild(archer)
     archer:idleMode()
     List.pushlast(HeroManager, archer)
 
@@ -92,15 +93,15 @@ end
 
 function GameMaster:addMonsters()
 	self:addDragon()
-	self:addSlime()
-	self:addPiglet()
-	self:addRat()
+	-- self:addSlime()
+	-- self:addPiglet()
+	-- self:addRat()
 end
 
 function GameMaster:addDragon()
     for var=1, monsterCount.dragon do
         local dragon = Dragon.new()
-        self.currentLayer:addChild(dragon)
+        currentLayer:addChild(dragon)
         dragon:setVisible(false)
         dragon:setAIEnabled(false)
         List.pushlast(DragonPool,dragon)
@@ -110,7 +111,7 @@ end
 function GameMaster:addSlime()
     for var=1, monsterCount.slime do
         local slime = Slime.new()
-        self.currentLayer:addChild(slime)
+        currentLayer:addChild(slime)
         slime:setVisible(false)
         slime:setAIEnabled(false)
         List.pushlast(SlimePool,slime)
@@ -120,7 +121,7 @@ end
 function GameMaster:addPiglet()
     for var=1, monsterCount.piglet do
     	local piglet = Piglet.new()
-    	self.currentLayer:addChild(piglet)
+    	currentLayer:addChild(piglet)
     	piglet:setVisible(false)
     	piglet:setAIEnabled(false)
     	List.pushlast(PigletPool,piglet)
@@ -130,7 +131,7 @@ end
 function GameMaster:addRat()
     for var=1, monsterCount.rat do
         local rat = Rat.new()
-        self.currentLayer:addChild(rat)
+        currentLayer:addChild(rat)
         rat:setVisible(false)
         rat:setAIEnabled(false)
         List.pushlast(RatPool,rat)

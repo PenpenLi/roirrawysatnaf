@@ -24,18 +24,4 @@ Quick-Cocos2d-x C++ support ready.
 ------------------------------------------------
 LOAD LUA FILE: /Volumes/D/GitHub/FantasyWarrior/src/main.lua
 ------------------------------------------------
-can not get file data of /Volumes/D/GitHub/FantasyWarrior/src/app/GlobalFunctions.lua
-[LUA ERROR] [string "/Volumes/D/GitHub/FantasyWarrior/src/main.lua"]:8: module 'app.GlobalFunctions' not found:
-	no field package.preload['app.GlobalFunctions']
-	no file './app/GlobalFunctions.lua'
-	no file '/usr/local/share/lua/5.1/app/GlobalFunctions.lua'
-	no file '/usr/local/share/lua/5.1/app/GlobalFunctions/init.lua'
-	no file '/usr/local/lib/lua/5.1/app/GlobalFunctions.lua'
-	no file '/usr/local/lib/lua/5.1/app/GlobalFunctions/init.lua'
-	no file '/Volumes/D/GitHub/FantasyWarrior/src/app/GlobalFunctions.lua'
-	no file './app/GlobalFunctions.so'
-	no file '/usr/local/lib/lua/5.1/app/GlobalFunctions.so'
-	no file '/usr/local/lib/lua/5.1/loadall.so'
-	no file './app.so'
-	no file '/usr/local/lib/lua/5.1/app.so'
-	no file '/usr/local/lib/lua/5.1/loadall.so'
+[LUA ERROR] [string "app/utility/GlobalFunctions.lua"]:17: attempt to index field 'exports' (a nil value)

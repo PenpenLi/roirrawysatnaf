@@ -2,6 +2,14 @@
 
 FantasyWarrior3D是cocos官网上面的一个3Ddemo，是基于cocos2d-x 3.4开发的。现在我打算基于cocos2d-x 3.12重新写这个demo，希望可以借此熟悉3.12的引擎以及3d的相关使用。  
 
+####1.4
+1. 完成`AttackCommand.lua`,`HPCounter.lua`。
+2. 攻击方通过`AttackCommand`来对目标造成伤害。
+3. `NotificationCenter`已经被弃用，使用`EventListenerCustom`和`EventCustom`来替换。
+4. `BattalefieldUI`和`Manager`做为全局变量使用，相当于c++的单例，算是lua的方便之处。
+
+		lua类成员变量前面加`_`的作用是防止和成员方法重名。
+
 ####1.3
 1. 基本完成`BattleScene.lua`, `BattlefieldUI.lua`, `GameMaster.lua`, `Manager.lua`, `Dragon.lua`, `Rat.lua`, `Piglet.lua`, `GlobalFunction.lua`, `List.lua`.
 2. 战斗的UI部分都放在`BattlefieldUI`中，`GameMaster`用于控制hero和monster在战场中的投放，`Manager`作为全局变量存放战场中各种类的容器。

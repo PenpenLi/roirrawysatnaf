@@ -17,15 +17,6 @@ local function main()
 	local director = cc.Director:getInstance()
 	director:setClearColor({r = 1, g = 1, b = 1, a = 1})
 
-	local testList = List.new()
-	dump(testList)
-	List.pushfirst(testList, "one")
-	dump(testList)
-	List.pushlast(testList, "two")
-	dump(testList)
-
-	do return end
-
 	local targetScene = "BattleScene"
 
 	if targetScene == "ChooseRoleScene" then
