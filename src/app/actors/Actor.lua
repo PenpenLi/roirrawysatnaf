@@ -83,8 +83,12 @@ function Actor:dyingMode(knockSource, knockAmount)
             cc.RemoveSelf:create()))
         
         self.angry = 0
-        -- local anaryChange = {_name = self._name, _angry = self._angry, _angryMax = self._angryMax}
-        -- MessageDispatchCenter:dispatchMessage(MessageDispatchCenter.MessageType.ANGRY_CHANGE, anaryChange)          
+        local anaryChange = {name = self.name, angry = self.angry, angryMax = self.angryMax}
+        local event = cc.EventCustom:new(MessageType.ANGRY_CHANGE)
+        event._usedata = anaryChange
+        local eventDispatcher = self:getEventDispatcher()
+        eventDispatcher:dispatchEvent(event)
+          
     else
         List.removeObj(MonsterManager,self) 
         local function recycle()
@@ -445,14 +449,14 @@ function Actor:addEffect(effect)
 end
 
 function Actor:initPuff()
-    local puff = cc.BillboardParticleSystem:create(ParticleManager:getInstance():getPlistData("walkpuff"))
-    local puffFrame = cc.SpriteFrameCache:getInstance():getSpriteFrame("walkingPuff.png")
-    puff:setTextureWithRect(puffFrame:getTexture(), puffFrame:getRect())
-    puff:setScale(1.5)
-    puff:setGlobalZOrder(0)
-    puff:setPositionZ(10)
-    self.puff = puff
-    self.effectNode:addChild(puff)
+    -- local puff = cc.BillboardParticleSystem:create(ParticleManager:getInstance():getPlistData("walkpuff"))
+    -- local puffFrame = cc.SpriteFrameCache:getInstance():getSpriteFrame("walkingPuff.png")
+    -- puff:setTextureWithRect(puffFrame:getTexture(), puffFrame:getRect())
+    -- puff:setScale(1.5)
+    -- puff:setGlobalZOrder(0)
+    -- puff:setPositionZ(10)
+    -- self.puff = puff
+    -- self.effectNode:addChild(puff)
 end
 
 

@@ -169,6 +169,93 @@ function MageNormalAttack:ctor(pos, facing, attackInfo, owner, target)
 end
 
 ---------------------------------------------------------------------------
+cc.exports.ArcherNormalAttack = class("ArcherNormalAttack", BasicCollider)
+
+function ArcherNormalAttack:ctor(pos, facing, attackInfo, owner)
+    ArcherNormalAttack.super.ctor(self, pos, facing, attackInfo)
+
+    self.owner = owner
+    local sprite3d = cc.Sprite3D:create("model/archer/arrow.obj")
+    sprite3d:setTexture("model/archer/hunter01_tex_head.jpg")
+    sprite3d:setScale(2)
+    sprite3d:setPosition3D(cc.vec3(0,0,50))
+    sprite3d:setRotation3D({x = -90, y = 0, z = 0})        
+    sprite3d:setRotation(math.deg(-facing)-90)
+    self.sp = sprite3d
+    self:setCameraMask(UserCameraFlagMask)
+
+end
+
+function ArcherNormalAttack:onTimeOut()
+    self:runAction(cc.RemoveSelf:create())
+end
+
+function ArcherNormalAttack:onCollide(target)
+    self:hurtEffect(target)
+    self:playHitAudio()    
+    self.owner.angry = self.owner.angry + target:hurt(self, true)*0.3
+    
+    local event = cc.EventCustom:new(MessageType.ANGRY_CHANGE)
+    event._usedata = {name = ArcherValues.name, angry = self.owner.angry, angryMax = self.owner.angryMax}
+    self:getEventDispatcher():dispatchEvent(event)
+
+    --set cur duration to its max duration, so it will be removed when checking time out
+    self.curDuration = self.duration+1
+end
+
+function ArcherNormalAttack:onUpdate(dt)
+    local selfPos = getPosTable(self)
+    local nextPos = cc.pRotateByAngle(cc.pAdd({x=self.speed*dt, y=0},selfPos),selfPos,self.facing)
+    self:setPosition(nextPos)
+end
+
+---------------------------------------------------------------------------
+cc.exports.ArcherSpecialAttack = class("ArcherSpecialAttack", BasicCollider)
+
+function ArcherSpecialAttack:ctor(pos, facing, attackInfo, owner)
+    ArcherSpecialAttack.super.ctor(self, pos, facing, attackInfo)
+
+    self.owner = owner
+    local sprite3d = cc.Sprite3D:create("model/archer/arrow.obj")
+    sprite3d:setTexture("model/archer/hunter01_tex_head.jpg")
+    sprite3d:setScale(2)
+    sprite3d:setPosition3D(cc.vec3(0,0,50))
+    sprite3d:setRotation3D({x = -90, y = 0, z = 0})        
+    sprite3d:setRotation(math.deg(-facing)-90)
+    self.sp = sprite3d
+    self:setCameraMask(UserCameraFlagMask)
+
+end
+
+function ArcherSpecialAttack:onTimeOut()
+    self:runAction(cc.RemoveSelf:create())
+end
+
+function ArcherSpecialAttack:onCollide(target)
+    if self.curDOTTime >= self.DOTTimer then
+        self:hurtEffect(target)
+        self:playHitAudio()    
+        self.owner.angry = self.owner.angry + target:hurt(self, true)*0.3
+        
+        local event = cc.EventCustom:new(MessageType.ANGRY_CHANGE)
+        event._usedata = {name = ArcherValues.name, angry = self.owner.angry, angryMax = self.owner.angryMax}
+        self:getEventDispatcher():dispatchEvent(event)
+        
+        self.DOTApplied = true
+    end
+end
+
+function ArcherSpecialAttack:onUpdate(dt)
+    local selfPos = getPosTable(self)
+    local nextPos = cc.pRotateByAngle(cc.pAdd({x=self.speed*dt, y=0},selfPos),selfPos,self.facing)
+    self:setPosition(nextPos)
+    self.curDOTTime = self.curDOTTime + dt
+    if self.DOTApplied then
+        self.DOTApplied = false
+        self.curDOTTime = 0
+    end
+end
+---------------------------------------------------------------------------
 cc.exports.DragonAttack = class("DragonAttack", BasicCollider)
 
 function DragonAttack:ctor(pos,facing,attackInfo)

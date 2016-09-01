@@ -69,19 +69,17 @@ function GameMaster:randomshowMonster(isFront)
 end
 
 function GameMaster:addHeros()
-	local knight = Knight.new()
-   	knight:setPosition(battleSiteX[1], 10)
-    currentLayer:addChild(knight)
-    knight:idleMode()
-    List.pushlast(HeroManager, knight)
+	-- local knight = Knight.new()
+ --   	knight:setPosition(battleSiteX[1], 10)
+ --    currentLayer:addChild(knight)
+ --    knight:idleMode()
+ --    List.pushlast(HeroManager, knight)
 
-    do return end
-
-	local mage = Mage.new()
-   	mage:setPosition(battleSiteX[1], 100)
-   	currentLayer:addChild(mage)
-   	mage:idleMode()
-   	List.pushlast(HeroManager, mage)
+	-- local mage = Mage.new()
+ --   	mage:setPosition(battleSiteX[1], 100)
+ --   	currentLayer:addChild(mage)
+ --   	mage:idleMode()
+ --   	List.pushlast(HeroManager, mage)
    	
     local archer = Archer.new()
     archer:setPosition(battleSiteX[1], -80)

@@ -37,6 +37,19 @@ cc.exports.WarriorProperty =
     dead = "audios/effects/knight/dead.mp3"
 }
 
+--Archer property
+cc.exports.Archerproperty =
+{
+    attack1 = "audios/effects/archer/swish-3.mp3",
+    attack2 = "audios/effects/archer/swish-4.mp3",
+    iwillfight = "audios/effects/archer/iwillfight.mp3",
+    wounded = "audios/effects/archer/hurt.mp3",
+    normalAttackShout = "audios/effects/archer/normalAttackShout.mp3",
+    specialAttackShout = "audios/effects/archer/specialAttackShout.mp3",
+    wounded = "audios/effects/archer/hurt.mp3",
+    dead = "audios/effects/archer/dead.mp3"
+}
+
 --Monster Dragon
 cc.exports.MonsterDragonValues = 
 {

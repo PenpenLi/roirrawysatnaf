@@ -2,6 +2,10 @@
 
 FantasyWarrior3D是cocos官网上面的一个3Ddemo，是基于cocos2d-x 3.4开发的。现在我打算基于cocos2d-x 3.12重新写这个demo，希望可以借此熟悉3.12的引擎以及3d的相关使用。  
 
+####1.5
+		
+		Camera通过setCameraFlag和Node的setCameraMask来来关联。
+
 ####1.4
 1. 完成`AttackCommand.lua`,`HPCounter.lua`。
 2. 攻击方通过`AttackCommand`来对目标造成伤害。

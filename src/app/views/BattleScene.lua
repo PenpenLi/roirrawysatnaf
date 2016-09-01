@@ -173,7 +173,9 @@ function BattleScene:UIcontainsPoint(position)
 	    --cclog("rectMage")
 	    message = MessageType.SPECIAL_MAGE         
 	end   
-	    
+	
+	message = MessageType.SPECIAL_ARCHER   
+
 	return message 
 end
 
@@ -184,12 +186,12 @@ function BattleScene:setCamera()
 	currentLayer:addChild(self.camera)
 	currentLayer:setCameraMask(UserCameraFlagMask)
 
-	for val = HeroManager.first, HeroManager.last do
-	    local sprite = HeroManager[val]
-	    if sprite.puff then
-	        sprite.puff:setCamera(camera)
-	    end
-	end      
+	-- for val = HeroManager.first, HeroManager.last do
+	--     local sprite = HeroManager[val]
+	--     if sprite.puff then
+	--         sprite.puff:setCamera(camera)
+	--     end
+	-- end      
 	
 	uiLayer:setCameraMask(UserCameraFlagMask)
 	self.camera:addChild(uiLayer)

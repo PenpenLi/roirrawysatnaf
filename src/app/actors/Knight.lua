@@ -70,9 +70,8 @@ function Knight:ctor()
 	    if self.specialAttackChance == 1 then return end
 	    self.specialAttackChance = 1
 	end
-	local eventDispatcher = self:getEventDispatcher()
 	local listener = cc.EventListenerCustom:create(MessageType.SPECIAL_KNIGHT, specialAttack)
-	eventDispatcher:addEventListenerWithFixedPriority(listener, 1)
+	self:getEventDispatcher():addEventListenerWithFixedPriority(listener, 1)
 
 end
 
@@ -116,7 +115,7 @@ end
 
 function Knight:init3D()
 	self:initShadow()
-	self:initPuff()
+	-- self:initPuff()
 	self.sprite3d = cc.EffectSprite3D:create(modelFile)
 	self.sprite3d:setScale(25)
 	self.sprite3d:addEffect(cc.vec3(0, 0, 0), CelLine, -1)
@@ -214,23 +213,21 @@ function Knight:hurt(collider, dirKnockMode)
         self:addEffect(blood)
 
         local eventDispatcher = self:getEventDispatcher()
-        local bloodMinus = {
+        local event = cc.EventCustom:new(MessageType.BLOOD_MINUS)
+        event._usedata = {
         	name = self.name, 
         	maxhp= self.maxhp, 
         	hp = self.hp, 
         	bloodBar = self.bloodBar, 
         	bloodBarClone = self.bloodBarClone,
         	avatar = self.avatar}
-        local event = cc.EventCustom:new(MessageType.BLOOD_MINUS)
-        event._usedata = bloodMinus
         eventDispatcher:dispatchEvent(event)
 
-        local anaryChange = {
-        	name = self.name, 
-        	angry = self.angry*10, 
-        	angryMax = self.angryMax}
         event = cc.EventCustom:new(MessageType.ANGRY_CHANGE)
-        event._usedata = anaryChange
+        event._usedata = {
+        	name = self.name, 
+        	angry = self.angry, 
+        	angryMax = self.angryMax}
         eventDispatcher:dispatchEvent(event)
 
         self.angry = self.angry + damage

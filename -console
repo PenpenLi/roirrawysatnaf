@@ -910,7 +910,7 @@ cc.EGLView was deprecated please use cc.GLView instead.
 ********** 
 cc.EGLView was deprecated please use cc.GLView instead.
 **********
-[LUA-print] table: 0x0bca8730
+[LUA-print] table: 0x0a32e738
 [LUA-print] 
 ********** 
 cc.ShaderCache was deprecated please use cc.GLProgramCache instead.
@@ -1215,45 +1215,31 @@ libpng warning: iCCP: known incorrect sRGB profile
 error:
      cc.RotateBy:create argument #3 is 'table'; 'number' expected.
 
-[LUA-print] [string "app/actors/Actor.lua"]:448: attempt to index field 'BillboardParticleSystem' (a nil value)
-stack traceback:
-	[string "app/actors/Knight.lua"]:119: in function 'init3D'
-	[string "app/actors/Knight.lua"]:56: in function 'ctor'
-	[string "cocos/cocos2d/functions.lua"]:239: in function 'new'
-	[string "app/controllers/GameMaster.lua"]:72: in function 'addHeros'
-	[string "app/controllers/GameMaster.lua"]:32: in function 'ctor'
-	[string "cocos/cocos2d/functions.lua"]:239: in function 'new'
-	[string "app/views/BattleScene.lua"]:35: in function 'onCreate'
-	[string "packages/mvc/ViewBase.lua"]:20: in function 'ctor'
-	[string "cocos/cocos2d/functions.lua"]:239: in function 'createView'
-	[string "packages/mvc/AppBase.lua"]:40: in function 'enterScene'
-	[string "packages/mvc/AppBase.lua"]:36: in function 'run'
-	[string "src/main.lua"]:32: in function <[string "src/main.lua"]:12>
-	[C]: in function 'xpcall'
-	[string "src/main.lua"]:36: in main chunk
-	[C]: in function 'require'
-	[string "require "src/main.lua""]:1: in main chunk
-[LUA-print] [string "app/actors/Actor.lua"]:448: attempt to index field 'BillboardParticleSystem' (a nil value)
-stack traceback:
-	[string "app/actors/Knight.lua"]:119: in function 'init3D'
-	[string "app/actors/Knight.lua"]:56: in function 'ctor'
-	[string "cocos/cocos2d/functions.lua"]:239: in function 'new'
-	[string "app/controllers/GameMaster.lua"]:72: in function 'addHeros'
-	[string "app/controllers/GameMaster.lua"]:32: in function 'ctor'
-	[string "cocos/cocos2d/functions.lua"]:239: in function 'new'
-	[string "app/views/BattleScene.lua"]:35: in function 'onCreate'
-	[string "packages/mvc/ViewBase.lua"]:20: in function 'ctor'
-	[string "cocos/cocos2d/functions.lua"]:239: in function 'createView'
-	[string "packages/mvc/AppBase.lua"]:40: in function 'enterScene'
-	[string "packages/mvc/AppBase.lua"]:36: in function 'run'
-	[string "src/main.lua"]:32: in function <[string "src/main.lua"]:12>
-	[C]: in function 'xpcall'
-	[string "src/main.lua"]:36: in main chunk
-	[C]: in function 'require'
-	[string "require "src/main.lua""]:1: in main chunk
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
 iShow!
 cocos2d: QuadCommand: resizing index size from [-1] to [2560]
-[LUA-print] [string "app/views/BattlefieldUI.lua"]:94: attempt to index field '_tmlabel' (a nil value)
-stack traceback:
-[LUA-print] [string "app/views/BattlefieldUI.lua"]:94: attempt to index field '_tmlabel' (a nil value)
-stack traceback:
