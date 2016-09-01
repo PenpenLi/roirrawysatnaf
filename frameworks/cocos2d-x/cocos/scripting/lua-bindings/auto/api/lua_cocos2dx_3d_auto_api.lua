@@ -97,6 +97,11 @@
 
 
 --------------------------------------------------------
+-- the cc ShadowSprite
+-- @field [parent=#cc] ShadowSprite#ShadowSprite ShadowSprite preloaded module
+
+
+--------------------------------------------------------
 -- the cc Bundle3D
 -- @field [parent=#cc] Bundle3D#Bundle3D Bundle3D preloaded module
 

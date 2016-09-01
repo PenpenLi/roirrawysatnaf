@@ -50,6 +50,25 @@ cc.exports.Archerproperty =
     dead = "audios/effects/archer/dead.mp3"
 }
 
+--Mage property
+cc.exports.MageProperty =
+{
+    blood = 1000,
+    attack = 100,
+    defense = 100,
+    speed = 50,
+    special_attack_chance = 0.33,
+        letstrade = "audios/effects/mage/letstrade.mp3",
+    ice_normal = "audios/effects/mage/ice_1.mp3",
+    ice_special = "audios/effects/mage/ice_2.mp3",
+    ice_normalAttackHit = "audios/effects/mage/ice_3.mp3",
+    ice_specialAttackHit = "audios/effects/mage/ice_4.mp3",
+    specialAttackShout = "audios/effects/mage/specialAttack.mp3",
+    normalAttackShout = "audios/effects/mage/normalAttack.mp3",
+    wounded = "audios/effects/mage/hurt.mp3",
+    dead = "audios/effects/mage/dead.mp3"
+}
+
 --Monster Dragon
 cc.exports.MonsterDragonValues = 
 {

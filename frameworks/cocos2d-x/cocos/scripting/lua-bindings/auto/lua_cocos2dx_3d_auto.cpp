@@ -7411,6 +7411,136 @@ int lua_register_cocos2dx_3d_Water(lua_State* tolua_S)
     return 1;
 }
 
+int lua_cocos2dx_3d_ShadowSprite_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.ShadowSprite",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.ShadowSprite:create");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_3d_ShadowSprite_create'", nullptr);
+            return 0;
+        }
+        cocos2d::ShadowSprite* ret = cocos2d::ShadowSprite::create(arg0);
+        object_to_luaval<cocos2d::ShadowSprite>(tolua_S, "cc.ShadowSprite",(cocos2d::ShadowSprite*)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.ShadowSprite:create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_3d_ShadowSprite_create'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrameName(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.ShadowSprite",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.ShadowSprite:createWithSpriteFrameName");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrameName'", nullptr);
+            return 0;
+        }
+        cocos2d::ShadowSprite* ret = cocos2d::ShadowSprite::createWithSpriteFrameName(arg0);
+        object_to_luaval<cocos2d::ShadowSprite>(tolua_S, "cc.ShadowSprite",(cocos2d::ShadowSprite*)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.ShadowSprite:createWithSpriteFrameName",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrameName'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrame(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.ShadowSprite",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::SpriteFrame* arg0;
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0, "cc.ShadowSprite:createWithSpriteFrame");
+        if(!ok)
+        {
+            tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrame'", nullptr);
+            return 0;
+        }
+        cocos2d::ShadowSprite* ret = cocos2d::ShadowSprite::createWithSpriteFrame(arg0);
+        object_to_luaval<cocos2d::ShadowSprite>(tolua_S, "cc.ShadowSprite",(cocos2d::ShadowSprite*)ret);
+        return 1;
+    }
+    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d\n ", "cc.ShadowSprite:createWithSpriteFrame",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrame'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_3d_ShadowSprite_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (ShadowSprite)");
+    return 0;
+}
+
+int lua_register_cocos2dx_3d_ShadowSprite(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.ShadowSprite");
+    tolua_cclass(tolua_S,"ShadowSprite","cc.ShadowSprite","cc.Sprite",nullptr);
+
+    tolua_beginmodule(tolua_S,"ShadowSprite");
+        tolua_function(tolua_S,"create", lua_cocos2dx_3d_ShadowSprite_create);
+        tolua_function(tolua_S,"createWithSpriteFrameName", lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrameName);
+        tolua_function(tolua_S,"createWithSpriteFrame", lua_cocos2dx_3d_ShadowSprite_createWithSpriteFrame);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::ShadowSprite).name();
+    g_luaType[typeName] = "cc.ShadowSprite";
+    g_typeCast["ShadowSprite"] = "cc.ShadowSprite";
+    return 1;
+}
+
 int lua_cocos2dx_3d_Bundle3D_load(lua_State* tolua_S)
 {
     int argc = 0;
@@ -7872,6 +8002,7 @@ TOLUA_API int register_all_cocos2dx_3d(lua_State* tolua_S)
 	lua_register_cocos2dx_3d_Animation3D(tolua_S);
 	lua_register_cocos2dx_3d_Skeleton3D(tolua_S);
 	lua_register_cocos2dx_3d_Effect3DOutline(tolua_S);
+	lua_register_cocos2dx_3d_ShadowSprite(tolua_S);
 	lua_register_cocos2dx_3d_Sprite3DCache(tolua_S);
 	lua_register_cocos2dx_3d_EffectSprite3D(tolua_S);
 	lua_register_cocos2dx_3d_Terrain(tolua_S);

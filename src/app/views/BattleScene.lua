@@ -174,7 +174,7 @@ function BattleScene:UIcontainsPoint(position)
 	    message = MessageType.SPECIAL_MAGE         
 	end   
 	
-	message = MessageType.SPECIAL_ARCHER   
+	message = MessageType.SPECIAL_MAGE         
 
 	return message 
 end

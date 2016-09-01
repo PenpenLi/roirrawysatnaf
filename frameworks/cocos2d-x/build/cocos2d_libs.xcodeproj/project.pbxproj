@@ -3878,6 +3878,12 @@
 		8459117D1D6DB892009AC85E /* EffectSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 845911791D6DB88B009AC85E /* EffectSprite.h */; };
 		8459117E1D6DB894009AC85E /* EffectSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 845911781D6DB88B009AC85E /* EffectSprite.cpp */; };
 		8459117F1D6DB895009AC85E /* EffectSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 845911781D6DB88B009AC85E /* EffectSprite.cpp */; };
+		84EB8C511D7834A800047ECE /* ShadowSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84EB8C4F1D7834A800047ECE /* ShadowSprite.cpp */; };
+		84EB8C521D7834A800047ECE /* ShadowSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84EB8C4F1D7834A800047ECE /* ShadowSprite.cpp */; };
+		84EB8C531D7834A800047ECE /* ShadowSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84EB8C4F1D7834A800047ECE /* ShadowSprite.cpp */; };
+		84EB8C541D7834A800047ECE /* ShadowSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 84EB8C501D7834A800047ECE /* ShadowSprite.h */; };
+		84EB8C551D7834A800047ECE /* ShadowSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 84EB8C501D7834A800047ECE /* ShadowSprite.h */; };
+		84EB8C561D7834A800047ECE /* ShadowSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 84EB8C501D7834A800047ECE /* ShadowSprite.h */; };
 		8525E3A21B291E42008EE815 /* clipper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8525E3A11B291E42008EE815 /* clipper.hpp */; };
 		8525E3A31B291E42008EE815 /* clipper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8525E3A11B291E42008EE815 /* clipper.hpp */; };
 		85505F041B60E3AB003F2CD4 /* CCBoneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C50306631B60B583001E6D43 /* CCBoneNode.cpp */; };
@@ -6796,6 +6802,8 @@
 		844FA14E1D6C2E0D00430C0D /* JumpBy3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpBy3D.h; sourceTree = "<group>"; };
 		845911781D6DB88B009AC85E /* EffectSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EffectSprite.cpp; sourceTree = "<group>"; };
 		845911791D6DB88B009AC85E /* EffectSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectSprite.h; sourceTree = "<group>"; };
+		84EB8C4F1D7834A800047ECE /* ShadowSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShadowSprite.cpp; sourceTree = "<group>"; };
+		84EB8C501D7834A800047ECE /* ShadowSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowSprite.h; sourceTree = "<group>"; };
 		8525E3A11B291E42008EE815 /* clipper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = clipper.hpp; sourceTree = "<group>"; };
 		85B374381B204B9400C488D6 /* clipper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clipper.cpp; sourceTree = "<group>"; };
 		94A6DF031C7303FD0094AEF7 /* LocalizationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalizationManager.cpp; sourceTree = "<group>"; };
@@ -10168,6 +10176,8 @@
 		B29594B81926D61F003EEF37 /* 3d */ = {
 			isa = PBXGroup;
 			children = (
+				84EB8C4F1D7834A800047ECE /* ShadowSprite.cpp */,
+				84EB8C501D7834A800047ECE /* ShadowSprite.h */,
 				8426F4E91D712C1E00FB9AC7 /* Water.cpp */,
 				8426F4EA1D712C1E00FB9AC7 /* Water.h */,
 				842B91521D6FE57A007A5781 /* EffectSprite3D.cpp */,
@@ -11860,6 +11870,7 @@
 				B665E2CC1AA80A6500DDB1C5 /* CCPUGravityAffectorTranslator.h in Headers */,
 				15AE189519AAD33D00C27E9E /* CCLayerLoader.h in Headers */,
 				1A57028C180BCC900088DEC7 /* CCSpriteFrameCache.h in Headers */,
+				84EB8C541D7834A800047ECE /* ShadowSprite.h in Headers */,
 				B6CAB21D1AF9AA1A00B9B856 /* btBoxBoxCollisionAlgorithm.h in Headers */,
 				B6CAAFEC1AF9A9E100B9B856 /* CCPhysics3DConstraint.h in Headers */,
 				2962D6031C61F02E004821A3 /* CCUITextFieldFormatter.h in Headers */,
@@ -12568,6 +12579,7 @@
 				507B3DE31C31BDD30067B53E /* btMultiSapBroadphase.h in Headers */,
 				507B3DE41C31BDD30067B53E /* CCPUGeometryRotatorTranslator.h in Headers */,
 				507B3DE51C31BDD30067B53E /* btUnionFind.h in Headers */,
+				84EB8C561D7834A800047ECE /* ShadowSprite.h in Headers */,
 				507B3DE61C31BDD30067B53E /* SequentialThreadSupport.h in Headers */,
 				507B3DE71C31BDD30067B53E /* btOptimizedBvh.h in Headers */,
 				507B3DE81C31BDD30067B53E /* btSolverBody.h in Headers */,
@@ -14311,6 +14323,7 @@
 				B6CAB5401AF9AA1A00B9B856 /* cl_platform.h in Headers */,
 				15AE1A4219AAD3D500C27E9E /* b2Distance.h in Headers */,
 				15AE195419AAD35100C27E9E /* CCDisplayFactory.h in Headers */,
+				84EB8C551D7834A800047ECE /* ShadowSprite.h in Headers */,
 				1A9DCA2A180E6955007A3AD4 /* CCGLBufferedNode.h in Headers */,
 				1A01C69F18F57BE800EFE3A6 /* CCString.h in Headers */,
 				464AD6E8197EBB1400E502D8 /* pvr.h in Headers */,
@@ -15027,6 +15040,7 @@
 				B6CAB1FD1AF9AA1A00B9B856 /* btDispatcher.cpp in Sources */,
 				B6CAB2BF1AF9AA1A00B9B856 /* btEmptyShape.cpp in Sources */,
 				50ABBE7D1925AB6F00A911A9 /* CCEventTouch.cpp in Sources */,
+				84EB8C511D7834A800047ECE /* ShadowSprite.cpp in Sources */,
 				B665E22A1AA80A6500DDB1C5 /* CCPUBoxCollider.cpp in Sources */,
 				1A5702EA180BCE750088DEC7 /* CCTileMapAtlas.cpp in Sources */,
 				50ABBD971925AB4100A911A9 /* CCGLProgramStateCache.cpp in Sources */,
@@ -15624,6 +15638,7 @@
 				507B3AA81C31BDD30067B53E /* CCPURibbonTrailRender.cpp in Sources */,
 				507B3AA91C31BDD30067B53E /* CCBoneNode.cpp in Sources */,
 				507B3AAA1C31BDD30067B53E /* CCDirector.cpp in Sources */,
+				84EB8C531D7834A800047ECE /* ShadowSprite.cpp in Sources */,
 				507B3AAB1C31BDD30067B53E /* CCTableView.cpp in Sources */,
 				507B3AAC1C31BDD30067B53E /* btVector3.cpp in Sources */,
 				507B3AAD1C31BDD30067B53E /* CCPUPositionEmitter.cpp in Sources */,
@@ -16736,6 +16751,7 @@
 				B6CAB2F61AF9AA1A00B9B856 /* btTriangleBuffer.cpp in Sources */,
 				1A57027F180BCC900088DEC7 /* CCSprite.cpp in Sources */,
 				B6CAB1FE1AF9AA1A00B9B856 /* btDispatcher.cpp in Sources */,
+				84EB8C521D7834A800047ECE /* ShadowSprite.cpp in Sources */,
 				B665E24F1AA80A6500DDB1C5 /* CCPUColorAffectorTranslator.cpp in Sources */,
 				15AE194719AAD35100C27E9E /* CCComAudio.cpp in Sources */,
 				15AE192719AAD35100C27E9E /* TriggerBase.cpp in Sources */,

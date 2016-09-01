@@ -46,6 +46,12 @@ function Mage:ctor()
 
 	copyTable(MageValues, self)
 
+	if uiLayer~=nil then
+	    self.bloodBar = uiLayer.MageBlood
+	    self.bloodBarClone = uiLayer.MageBloodClone
+	    self.avatar = uiLayer.MagePng
+	end
+
 	self:init3D()
 	self:initActions()
 
@@ -59,6 +65,14 @@ function Mage:ctor()
 
 	end
 	self:scheduleUpdate(update)
+
+	local function specialAttack()
+	    if self.specialAttackChance == 1 then return end
+	    self.specialAttackChance = 1
+
+	end
+	local listener = cc.EventListenerCustom:create(MessageType.SPECIAL_MAGE, specialAttack)
+	self:getEventDispatcher():addEventListenerWithFixedPriority(listener, 1)
 
 end
 
@@ -108,6 +122,120 @@ function Mage:switchItem(itemType)
     self.items[itemType] = itemId % 2
 
     self:updateItem(itemType)
+end
+
+function Mage:doNormalAttack()
+    ccexp.AudioEngine:play2d(MageProperty.normalAttackShout, false,0.4)
+    ccexp.AudioEngine:play2d(MageProperty.ice_normal, false,0.8)
+    MageNormalAttack.new(getPosTable(self), self.curFacing, self.normalAttack, self, self.target)
+end
+
+function Mage:doSpecialAttack()
+    self.specialAttackChance = MageValues.specialAttackChance
+    self.angry = ActorCommonValues.angry
+    local event = cc.EventCustom:new(MessageType.ANGRY_CHANGE)
+    event._usedata = {name = self.name, angry = self.angry, angryMax = self.angryMax}
+    self:getEventDispatcher():dispatchEvent(event)
+
+    --mage will create 3 ice spikes on the ground
+    --get 3 positions
+    ccexp.AudioEngine:play2d(MageProperty.specialAttackShout, false,0.5)
+    ccexp.AudioEngine:play2d(MageProperty.ice_special, false,1)
+    local pos1 = getPosTable(self)
+    local pos2 = getPosTable(self)
+    local pos3 = getPosTable(self)
+    pos1.x = pos1.x+130
+    pos2.x = pos2.x+330
+    pos3.x = pos3.x+530
+    pos1 = cc.pRotateByAngle(pos1, self.myPos, self.curFacing)
+    pos2 = cc.pRotateByAngle(pos2, self.myPos, self.curFacing)
+    pos3 = cc.pRotateByAngle(pos3, self.myPos, self.curFacing)
+    MageIceSpikes.new(pos1, self.curFacing, self.specialAttack, self)
+    local function spike2()
+        MageIceSpikes.new(pos2, self.curFacing, self.specialAttack, self)
+    end
+    local function spike3()
+        MageIceSpikes.new(pos3, self.curFacing, self.specialAttack, self)
+    end
+    delayExecute(self,spike2,0.25)
+    delayExecute(self,spike3,0.5)
+end
+
+function Mage:hurtSoundEffects()
+    ccexp.AudioEngine:play2d(MageProperty.wounded, false,1)
+end
+
+function Mage:playDyingEffects()
+    ccexp.AudioEngine:play2d(MageProperty.dead, false,1)
+end
+
+function Mage:hurt(collider, dirKnockMode)
+    if self.isalive == true then 
+        --TODO add sound effect
+
+        local damage = collider.damage
+        --calculate the real damage
+        local critical = false
+        local knock = collider.knock
+        if math.random() < collider.criticalChance then
+            damage = damage*1.5
+            critical = true
+            knock = knock*2
+        end
+        damage = damage + damage * math.random(-1,1) * 0.15        
+        damage = damage - self.defense
+        damage = math.floor(damage)
+
+        if damage <= 0 then
+            damage = 1
+        end
+
+        self.hp = self.hp - damage
+
+        if self.hp > 0 then
+            if critical == true then
+                self:knockMode(collider, dirKnockMode)
+                self:hurtSoundEffects()
+            else
+                self:hurtSoundEffects()
+            end
+        else
+            self.hp = 0
+            self.isalive = false
+            self:dyingMode(getPosTable(collider),knock)        
+        end
+
+        --three param judge if crit
+        local blood = self.hpCounter:showBloodLossNum(damage,self,critical)
+        if self.name == "Rat" then
+            blood:setPositionZ(G.winSize.height*0.25)
+        end
+        blood:setCameraMask(UserCameraFlagMask)
+        self:addEffect(blood)
+
+        local eventDispatcher = self:getEventDispatcher()
+        local event = cc.EventCustom:new(MessageType.BLOOD_MINUS)
+        event._usedata = {
+        	name = self.name, 
+        	maxhp= self.maxhp, 
+        	hp = self.hp, 
+        	bloodBar = self.bloodBar, 
+        	bloodBarClone = self.bloodBarClone,
+        	avatar = self.avatar}
+        eventDispatcher:dispatchEvent(event)
+
+        event = cc.EventCustom:new(MessageType.ANGRY_CHANGE)
+        event._usedata = {
+        	name = self.name, 
+        	angry = self.angry, 
+        	angryMax = self.angryMax}
+        eventDispatcher:dispatchEvent(event)
+
+
+        self.angry = self.angry + damage
+        return damage        
+    end
+    return 0
 end
 
 return Mage

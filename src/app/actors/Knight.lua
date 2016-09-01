@@ -239,11 +239,9 @@ end
 function Knight:doSpecialAttack()
     self.specialAttackChance = KnightValues.specialAttackChance
     self.angry = ActorCommonValues.angry
-    local anaryChange = {name = self.name, angry = self.angry, angryMax = self.angryMax}
     local event = cc.EventCustom:new(MessageType.ANGRY_CHANGE)
-    event._usedata = anaryChange
-    local eventDispatcher = self:getEventDispatcher()
-    eventDispatcher:dispatchEvent(event)
+    event._usedata = {name = self.name, angry = self.angry, angryMax = self.angryMax}
+    self:getEventDispatcher():dispatchEvent(event)
 
     -- knight will create 2 attacks one by one  
     local attack = self.specialAttack
