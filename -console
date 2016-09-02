@@ -910,7 +910,7 @@ cc.EGLView was deprecated please use cc.GLView instead.
 ********** 
 cc.EGLView was deprecated please use cc.GLView instead.
 **********
-[LUA-print] table: 0x08927730
+[LUA-print] table: 0x0bfef738
 [LUA-print] 
 ********** 
 cc.ShaderCache was deprecated please use cc.GLProgramCache instead.
@@ -1212,6 +1212,14 @@ error:
 
 cocos2d: warning: Attribute not found: a_normal
 libpng warning: iCCP: known incorrect sRGB profile
+[LUA-print] [INFO] "/Volumes/D/GitHub/FantasyWarrior/res/shader3D/18.jpg" rc=1 id=6 512 x 512 @ 16 bpp => 512 KB
+"/Volumes/D/GitHub/FantasyWarrior/res/shader3D/water.png" rc=2 id=4 512 x 512 @ 16 bpp => 512 KB
+"/Volumes/D/GitHub/FantasyWarrior/res/FX/FX.png" rc=27 id=1 512 x 512 @ 32 bpp => 1024 KB
+"/Volumes/D/GitHub/FantasyWarrior/res/shader3D/wave1.jpg" rc=1 id=5 512 x 512 @ 16 bpp => 512 KB
+"/Volumes/D/GitHub/FantasyWarrior/res/model/scene/changjing.jpg" rc=3 id=3 2048 x 2048 @ 16 bpp => 8192 KB
+"/Volumes/D/GitHub/FantasyWarrior/res/battlefieldUI/BattlefieldUI.png" rc=45 id=2 1005 x 1016 @ 32 bpp => 3988 KB
+TextureCache dumpDebugInfo: 6 textures, for 14740 KB (14.40 MB)
+
 error:
      cc.RotateBy:create argument #3 is 'table'; 'number' expected.
 
@@ -1219,11 +1227,24 @@ cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_normal
-cocos2d: warning: Attribute not found: a_texCoord1
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+setBlendFunc of cc.Sprite will deprecate two int parameter form,please pass a table like {src = xx, dst = xx} as a parameter
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_texCoord1
 cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_texCoord1
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord1
 cocos2d: warning: Attribute not found: a_texCoord
 cocos2d: warning: Attribute not found: a_texCoord
 cocos2d: warning: Attribute not found: a_texCoord
@@ -1236,12 +1257,87 @@ cocos2d: warning: Attribute not found: a_texCoord1
 cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_texCoord
+cocos2d: warning: Attribute not found: a_normal
+cocos2d: warning: Attribute not found: a_normal
 cocos2d: warning: Attribute not found: a_texCoord
 cocos2d: warning: Attribute not found: a_texCoord
 iShow!
 cocos2d: QuadCommand: resizing index size from [-1] to [2560]
 [LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+Warning: cc.Node:stopAction argument 2 is invalid native object(nullptr)
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+[LUA-print] [INFO] can't find plistData by the specified keyName
+Warning: cc.Node:stopAction argument 2 is invalid native object(nullptr)
 [LUA-print] [INFO] can't find plistData by the specified keyName
 [LUA-print] [INFO] can't find plistData by the specified keyName
 [LUA-print] [INFO] can't find plistData by the specified keyName

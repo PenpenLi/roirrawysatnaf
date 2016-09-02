@@ -38,7 +38,7 @@ function BattleScene:onCreate()
 
 	local function gameController(dt)
 		self.gameMaster:update(dt)
-		-- collisionDetect(dt)
+		collisionDetect(dt)
 		solveAttacks(dt)
 		self:moveCamera(dt)
 	end
@@ -135,22 +135,22 @@ end
 
 function BattleScene:moveCamera(dt)
     --cclog("moveCamera")
-    if self.camera == nil then return end
+    if camera == nil then return end
 
-    local cameraPosition = getPosTable(self.camera)
+    local cameraPosition = getPosTable(camera)
     local focusPoint = getFocusPointOfHeros()
     if specialCamera.valid == true then
         local position = cc.pLerp(cameraPosition, 
         	cc.p(specialCamera.position.x, (cameraOffset.y + focusPoint.y-display.height*3/4)*0.5), 
         	5*dt)
         
-        self.camera:setPosition(position)
-        self.camera:lookAt(cc.vec3(position.x, specialCamera.position.y, 50.0), cc.vec3(0.0, 1.0, 0.0))
+        camera:setPosition(position)
+        camera:lookAt(cc.vec3(position.x, specialCamera.position.y, 50.0), cc.vec3(0.0, 1.0, 0.0))
     elseif List.getSize(HeroManager) > 0 then
         local temp = cc.pLerp(cameraPosition, cc.p(focusPoint.x+cameraOffset.x, cameraOffset.y + focusPoint.y-display.height*3/4), 2*dt)
         local position = cc.vec3(temp.x, temp.y, display.height/2-100)
-        self.camera:setPosition3D(position)
-        self.camera:lookAt(cc.vec3(position.x, focusPoint.y, 50.0), cc.vec3(0.0, 0.0, 1.0))
+        camera:setPosition3D(position)
+        camera:lookAt(cc.vec3(position.x, focusPoint.y, 50.0), cc.vec3(0.0, 0.0, 1.0))
         --cclog("\ncalf %f %f %f \ncalf %f %f 50.000000", position.x, position.y, position.z, focusPoint.x, focusPoint.y)            
     end
 end
@@ -174,16 +174,14 @@ function BattleScene:UIcontainsPoint(position)
 	    message = MessageType.SPECIAL_MAGE         
 	end   
 	
-	message = MessageType.SPECIAL_MAGE         
-
 	return message 
 end
 
 function BattleScene:setCamera()
-	self.camera = cc.Camera:createPerspective(60.0, display.width/display.height, 10.0, 4000.0)
-	self.camera:setGlobalZOrder(10)
-	self.camera:setCameraFlag(UserCameraFlagMask)
-	currentLayer:addChild(self.camera)
+	cc.exports.camera = cc.Camera:createPerspective(60.0, display.width/display.height, 10.0, 4000.0)
+	camera:setGlobalZOrder(10)
+	camera:setCameraFlag(UserCameraFlagMask)
+	currentLayer:addChild(camera)
 	currentLayer:setCameraMask(UserCameraFlagMask)
 
 	-- for val = HeroManager.first, HeroManager.last do
@@ -194,7 +192,17 @@ function BattleScene:setCamera()
 	-- end      
 	
 	uiLayer:setCameraMask(UserCameraFlagMask)
-	self.camera:addChild(uiLayer)
+	camera:addChild(uiLayer)
+
+	-- local cameraPosition = getPosTable(camera)
+	-- local focusPoint = getFocusPointOfHeros()
+    -- local temp = cc.pLerp(cameraPosition, 
+    -- 	cc.p(focusPoint.x+cameraOffset.x, cameraOffset.y + focusPoint.y-display.height*3/4), 
+    -- 	2*dt)
+    -- local position = cc.vec3(temp.x, temp.y, display.height/2-100)
+    -- local position = cc.vec3(focusPoint.x+cameraOffset.x, cameraOffset.y + focusPoint.y-display.height*3/4, display.height/2-100)
+    -- camera:setPosition3D(position)
+    -- camera:lookAt(cc.vec3(position.x, focusPoint.y, 50.0), cc.vec3(0.0, 0.0, 1.0))
 
 end
 

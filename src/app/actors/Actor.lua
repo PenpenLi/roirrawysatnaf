@@ -290,11 +290,11 @@ end
 
 --======attacking collision check
 function Actor:doNormalAttack()
-    BasicCollider.create(self.myPos, self.curFacing, self.normalAttack)
+    BasicCollider.new(self.myPos, self.curFacing, self.normalAttack)
     self:normalAttackSoundEffects()
 end
 
-function Actor:attackUpdate(dt)   
+function Actor:attackUpdate(dt)
     self.attackTimer = self.attackTimer + dt
     if self.attackTimer > self.attackFrequency then
         self.attackTimer = self.attackTimer - self.attackFrequency

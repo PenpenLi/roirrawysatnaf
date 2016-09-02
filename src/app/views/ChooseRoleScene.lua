@@ -215,6 +215,7 @@ function ChooseRoleScene:addHeros()
 	knight:setRotation3D(rtt[2])
 	knight:setPosition3D(pos[2])
 	knight:setScale(1.3)
+	knight:setAIEnabled(false)
 	self:addChild(knight)
 
 	local archer = Archer.new()
@@ -222,6 +223,7 @@ function ChooseRoleScene:addHeros()
 	archer:setRotation3D(rtt[1])
 	archer:setPosition3D(pos[1])
 	archer:setScale(1.3)
+	archer:setAIEnabled(false)
 	self:addChild(archer)
 
 	local mage = Mage.create()
@@ -229,6 +231,7 @@ function ChooseRoleScene:addHeros()
 	mage:setRotation3D(rtt[3])
 	mage:setPosition3D(pos[3])
 	mage:setScale(1.3)
+	mage:setAIEnabled(false)
 	self:addChild(mage)
 
 	--hero rotate

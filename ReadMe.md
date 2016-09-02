@@ -3,6 +3,8 @@
 FantasyWarrior3D是cocos官网上面的一个3Ddemo，是基于cocos2d-x 3.4开发的。现在我打算基于cocos2d-x 3.12重新写这个demo，希望可以借此熟悉3.12的引擎以及3d的相关使用。  
 
 ####1.5
+1. 所有actor的内容都完善；
+2. boss出场，camera的控制；
 		
 		Camera通过setCameraFlag和Node的setCameraMask来来关联。
 

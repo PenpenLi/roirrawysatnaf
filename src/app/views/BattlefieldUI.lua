@@ -16,6 +16,9 @@ local res_light = "#specialLight.png"
 local BattlefieldUI = class("BattlefieldUI", cc.Layer)
 
 function BattlefieldUI:ctor()
+	local buf = cc.Director:getInstance():getTextureCache():getCachedTextureInfo()
+	printInfo(buf)
+
 	self:avatarInit()
 	self:bloodbarInit()
 	self:angrybarInit()

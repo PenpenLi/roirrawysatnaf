@@ -19,14 +19,16 @@ local function main()
 
 	local targetScene = "BattleScene"
 
-	if targetScene == "ChooseRoleScene" then
+	if targetScene == "MainScene" then
+
+	elseif targetScene == "ChooseRoleScene" then
 		display.loadSpriteFrames("FX/FX.plist", "FX/FX.png")
 		display.loadSpriteFrames("chooseRole/chooserole.plist", "chooseRole/chooserole.png")
 	
 	elseif targetScene == "BattleScene" then
 		display.loadSpriteFrames("FX/FX.plist", "FX/FX.png")
-		display.loadSpriteFrames("battlefieldUI/battleFieldUI.plist", "battlefieldUI/battleFieldUI.png")
-		
+		display.loadSpriteFrames("battlefieldUI/battleFieldUI.plist", "battlefieldUI/BattlefieldUI.png")
+	
 	end
 
 	require("app.MyApp"):create():run(targetScene)
